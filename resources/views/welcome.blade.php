@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About Us - Sow&Borrow Loans</title>
@@ -47,17 +47,17 @@
     <!-- Features Section -->
     <section class="max-w-6xl mx-auto mb-16 grid grid-cols-1 md:grid-cols-3 gap-8" data-aos="fade-up">
       <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="zoom-in">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg" alt="Low Interest" class="rounded mb-4">
+        <img src="lir.jpeg" alt="Low Interest" class="rounded mb-4">
         <h3 class="text-xl font-bold mb-2">Low-Interest Rates</h3>
         <p>We offer competitive interest rates to support small and large-scale farmers.</p>
       </div>
       <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="100">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg" alt="Fast Approval" class="rounded mb-4">
+        <img src="ela.png" alt="Fast Approval" class="rounded mb-4">
         <h3 class="text-xl font-bold mb-2">Fast Loan Approval</h3>
         <p>Get your loans approved quickly so you can focus on what really matters on your land.</p>
       </div>
       <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Unknown_person.jpg" alt="Support Team" class="rounded mb-4">
+        <img src="third.jpeg" alt="Support Team" class="rounded mb-4">
         <h3 class="text-xl font-bold mb-2">Agri-Expert Support</h3>
         <p>Our dedicated team of agricultural finance experts is here to guide you every step of the way.</p>
       </div>
