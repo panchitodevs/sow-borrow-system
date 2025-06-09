@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Login - Sow & Borrow</title>
+    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
     <style>
         body {
             background: url(images/pic1.png) no-repeat center center fixed;

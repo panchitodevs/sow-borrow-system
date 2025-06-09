@@ -9,13 +9,13 @@
 
     <!-- Navigation and Logout -->
     <div class="flex items-center space-x-6">
-      <a href="{{ url('/home') }}" class="font-bold hover:text-green-600">Home</a>
-      <a href="{{ url('/weather') }}" class="font-bold hover:text-green-600">Weather</a>
-      <a href="{{ url('/market-insights') }}" class="font-bold hover:text-green-600">Market Data</a>
-      <a href="{{ url('/loans') }}" class="font-bold hover:text-green-600">Loaning</a>
-      <a href="{{ url('/investments') }}" class="font-bold hover:text-green-600">Investing</a>
-      <a href="{{ url('/linkage') }}" class="font-bold hover:text-green-600">Linkage</a>
-      <a href="{{ url('/about') }}" class="font-bold hover:text-green-600">About Us</a>
+      <a href="{{ url('/home') }}" class="font-bold text-black hover:text-green-600">Home</a>
+      <a href="{{ url('/weather') }}" class="font-bold text-black hover:text-green-600">Weather</a>
+      <a href="{{ url('/market-insights') }}" class="font-bold text-black hover:text-green-600">Market Data</a>
+      <a href="{{ url('/loans') }}" class="font-bold text-black hover:text-green-600">Loaning</a>
+      <a href="{{ url('/investments') }}" class="font-bold text-black hover:text-green-600">Investing</a>
+      <a href="{{ url('/linkage') }}" class="font-bold text-black hover:text-green-600">Linkage</a>
+      <a href="{{ url('/about') }}" class="font-bold text-black hover:text-green-600">About Us</a>
       <!-- Logout Button Styled Like a Link -->
       <form method="POST" action="{{ route('logout') }}">
         @csrf
