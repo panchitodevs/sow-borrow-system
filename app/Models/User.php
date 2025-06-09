@@ -18,8 +18,20 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'atm_account_number',
+        'atm_pin',
+        'first_name',
+        'middle_name',
+        'last_name',
+        'gender',
+        'civil_status',
         'email',
+        'phone',
+        'barangay',
+        'street',
+        'city',
+        'zip',
+        'dob',
         'password',
     ];
 
@@ -43,3 +55,4 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 }
+    

@@ -13,9 +13,20 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('atm_account_number')->unique();
+            $table->string('atm_pin');
+            $table->string('first_name');
+            $table->string('middle_name');
+            $table->string('last_name');
+            $table->enum('gender', ['male', 'female', 'other']);
+            $table->string('civil_status');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('phone');
+            $table->string('barangay');
+            $table->string('street');
+            $table->string('city');
+            $table->string('zip');
+            $table->date('dob');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
