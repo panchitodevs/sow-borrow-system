@@ -28,15 +28,13 @@
 
 <body class="pt-20 text-green-900 bg-white">
 
-@include('auth.partials.navbar')
-
 <!-- Hero -->
 <section class="hero text-center px-4 pt-10" id="home" data-aos="fade-down">
   <h1 class="text-4xl font-bold mb-2">Sowing the Seeds of Progress with Smart Farm Loans</h1>
   <h2 class="text-xl mb-6">Smart financing solutions to help you cultivate success, season after season</h2>
   <div class="flex justify-center gap-6 mb-4" data-aos="zoom-in">
-    <a href="{{ url('/investments') }}" class="bg-green-600 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-700 transition">Apply to be an Investor</a>
-    <a href="{{ url('/loans') }}" class="bg-green-600 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-700 transition">Apply for a Loan</a>
+    <a href="{{ url('/vest') }}" class="bg-green-600 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-700 transition">INVESTOR RECORDS</a>
+    <a href="{{ url('/loaning') }}" class="bg-green-600 text-white py-3 px-6 rounded-lg text-lg hover:bg-green-700 transition">LOAN RECORDS</a>
   </div>
 </section>
 

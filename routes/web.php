@@ -10,6 +10,11 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\LoanController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\MarketInsightController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LoaningController;
+use App\Http\Controllers\VestmentController;
+use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +67,39 @@ Route::middleware(['auth'])->group(function() {
 
 //Market Insight route 
 Route::get('/market-insights', [MarketInsightController::class, 'index'])->name('market.insights');
+
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+});
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/loaning', [LoaningController::class, 'index'])->name('loaning.index');
+    Route::post('/loaning', [LoaningController::class, 'store'])->name('loaning.store');
+    Route::get('/loaning/{id}/edit', [LoaningController::class, 'edit'])->name('loaning.edit');
+    Route::patch('/loaning/{id}', [LoaningController::class, 'update'])->name('loaning.update');
+    Route::delete('/loaning/{id}', [LoaningController::class, 'destroy'])->name('loaning.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/vest', [VestmentController::class, 'index'])->name('vest.index');
+    Route::post('/vest', [VestmentController::class, 'store'])->name('vest.store');
+    Route::get('/vest/{id}/edit', [VestmentController::class, 'edit'])->name('vest.edit');
+    Route::put('/vest/{id}', [VestmentController::class, 'update'])->name('vest.update');
+    Route::delete('/vest/{id}', [VestmentController::class, 'destroy'])->name('vest.destroy');
+});
+
+//Profile route
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});
+
 
 // Logout route
 Route::post('/logout', function () {

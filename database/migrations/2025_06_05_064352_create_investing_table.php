@@ -17,6 +17,7 @@ class CreateInvestingTable extends Migration
             $table->text('notes')->nullable();  // Optional
             $table->string('phone');            // Auto-filled
             $table->string('email');            // Auto-filled
+            $table->string('status');
             $table->timestamps();
         });
     }

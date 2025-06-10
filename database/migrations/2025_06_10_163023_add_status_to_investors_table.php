@@ -11,17 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('investments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('investors', function (Blueprint $table) {
+            $table->string('status')->default('active'); // or enum if needed
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
-        Schema::dropIfExists('investments');
+        Schema::table('investors', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
+    
 };

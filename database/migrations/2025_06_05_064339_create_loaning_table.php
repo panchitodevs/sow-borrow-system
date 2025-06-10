@@ -18,6 +18,7 @@ class CreateLoaningTable extends Migration
             $table->string('collateral')->nullable();
             $table->string('phone');
             $table->string('email');
+            $table->string('status');
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@ class InvestmentController extends Controller
 {
     public function create()
     {
-        return view('investments');
+        return view('auth.investments');
     }
 
     public function store(Request $request)

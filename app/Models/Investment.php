@@ -10,7 +10,7 @@ class Investment extends Model
     use HasFactory;
     protected $table = 'investors';
     protected $fillable = [
-        'user_id', 'amount', 'investment_type', 'duration_months', 'notes', 'email', 'phone',
+        'user_id', 'amount', 'investment_type', 'duration_months', 'notes', 'email', 'phone','status'
     ];
     
 }

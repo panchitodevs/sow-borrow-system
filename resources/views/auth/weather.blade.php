@@ -4,9 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Weather - Sow & Borrow</title>
+  <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
-    /* Original CSS unchanged */
     body { margin: 0; font-family: sans-serif; background-color: #f9f9f9; }
     .top-banner { width: 100%; height: 120px; background: url('{{ asset('images/plant1.jpg') }}') no-repeat center center; background-size: cover; }
     .marquee { background-color: #61a84a; padding: 10px; display: flex; justify-content: space-around; color: white; font-weight: bold; border-radius: 10px; margin: 0 20px; margin-top: -20px; position: relative; z-index: 3; }
@@ -39,7 +41,7 @@
   <div class="marquee">DAILY WEATHER</div>
   <div class="top-bar">
     <div class="image-box">
-      <img src="{{ asset('images/date.png') }}" alt="Weather" >
+      <img src="{{ asset('images/date.png') }}" alt="Weather" width= "100%">
     </div>
     <div class="clock-box">
       <h4 style="margin: 0;">
@@ -52,6 +54,7 @@
     </div>
   </div>
   <br>
+
 
   <div class="accordion">
     <!-- Heat Index Summary -->
@@ -66,15 +69,16 @@
             <tr><th>City</th><th>Region</th><th>Heat Index (°C)</th><th>Alert</th></tr>
           </thead>
           <tbody>
-            <tr class="color-red"><td>Tuguegarao</td><td>Cagayan</td><td>42</td><td>Extreme Danger</td></tr>
+            <tr class="color-red"><td>Tuguegarao</td><td>Cagayan</td><td>43</td><td>Extreme Danger</td></tr>
             <tr class="color-orange"><td>Dagupan</td><td>Pangasinan</td><td>41</td><td>Danger</td></tr>
-            <tr class="color-red"><td>Clark Airport</td><td>Pampanga</td><td>43</td><td>Extreme Danger</td></tr>
-            <tr class="color-orange"><td>Subic Bay</td><td>Zambales</td><td>40</td><td>Danger</td></tr>
+            <tr class="color-red"><td>Clark Airport</td><td>Pampanga</td><td>44</td><td>Extreme Danger</td></tr>
+            <tr class="color-orange"><td>Subic Bay</td><td>Zambales</td><td>42</td><td>Danger</td></tr>
           </tbody>
         </table>
-        <p class="mt-4">Current heat indices are based on recent measurements and heatwave warnings across Luzon, with some locations reaching up to 43°C. :contentReference[oaicite:4]{index=4}</p>
+        <p class="mt-4">Based on DOST‑PAGASA’s iHeatMap forecast, several locations will experience heat indices between 41–44 °C on June 11, placing them in the Danger to Extreme Danger categories.</p>
       </div>
     </div>
+
 
     <!-- General Weather -->
     <div class="accordion-item">
@@ -83,20 +87,49 @@
         <span class="accordion-icon">▼</span>
       </div>
       <div class="accordion-content">
-        <p>According to Holiday Weather (2025), May is the hottest month... (original content).</p>
+        <p>Tomorrow’s weather forecast across Luzon indicates a mix of rain and thunderstorms due to the southwest monsoon (Habagat), especially over Metro Manila and nearby regions.</p>
+
 
         <h2>Forecast Weather Conditions</h2>
         <table>
-          <thead><tr><th>Place</th><th>Condition</th><th>Caused By</th><th>Impacts</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Place</th>
+              <th>Condition</th>
+              <th>Caused By</th>
+              <th>Impacts</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Manila</td><td>Sunny</td><td>High pressure system</td><td>Clear skies, warm</td></tr>
-            <tr><td>Cebu</td><td>Partly Cloudy</td><td>Moisture from the sea</td><td>Warm, occasional clouds</td></tr>
-            <tr><td>Davao</td><td>Rainy</td><td>Monsoon</td><td>Frequent showers</td></tr>
-            <tr><td>Baguio</td><td>Foggy</td><td>High humidity</td><td>Reduced visibility</td></tr>
+            <tr>
+              <td>Manila / Las Piñas</td>
+              <td>Overcast & Thunderstorms</td>
+              <td>Southwest Monsoon</td>
+              <td>Heavy rain, potential flooding</td>
+            </tr>
+            <tr>
+              <td>Cebu</td>
+              <td>Showers</td>
+              <td>Moist Habagat flow</td>
+              <td>Wet roads, localized flooding</td>
+            </tr>
+            <tr>
+              <td>Davao</td>
+              <td>Scattered Rain</td>
+              <td>Monsoon influence</td>
+              <td>Isolated showers</td>
+            </tr>
+            <tr>
+              <td>Baguio</td>
+              <td>Cloudy</td>
+              <td>High humidity</td>
+              <td>Cooler, damp</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
+
 
     <!-- Daily Temperature -->
     <div class="accordion-item">
@@ -105,33 +138,44 @@
         <span class="accordion-icon">▼</span>
       </div>
       <div class="accordion-content">
-        <h3>Top 10 Lowest (Jun 8, 2025)</h3>
+        <h3>Forecast Abs. Min & Max (Philippine Stations)</h3>
         <table>
-          <thead><tr><th>Station</th><th>Temp (°C)</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Station</th>
+              <th>Forecast Temp (°C)</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Baguio City</td><td>18.0</td></tr>
-            <tr><td>Malaybalay, Bukidnon</td><td>20.8</td></tr>
-            <tr><td>Tanay, Rizal</td><td>21.2</td></tr>
-            <tr><td>Coron, Palawan</td><td>22.4</td></tr>
-            <tr><td>Casiguran, Aurora</td><td>22.8</td></tr>
+            <tr>
+              <td>Baguio City</td>
+              <td>19 – 24</td>
+            </tr>
+            <tr>
+              <td>Tuguegarao City</td>
+              <td>25 – 36</td>
+            </tr>
+            <tr>
+              <td>Manila</td>
+              <td>26 – 30</td>
+            </tr>
+            <tr>
+              <td>Legazpi</td>
+              <td>25 – 32</td>
+            </tr>
+            <tr>
+              <td>Davao Intl Airport</td>
+              <td>24 – 32</td>
+            </tr>
           </tbody>
         </table>
-
-        <h3>Top 10 Highest (Jun 8, 2025)</h3>
-        <table>
-          <thead><tr><th>Station</th><th>Temp (°C)</th></tr></thead>
-          <tbody>
-            <tr><td>Tuguegarao City</td><td>36.4</td></tr>
-            <tr><td>Aparri, Cagayan</td><td>34.8</td></tr>
-            <tr><td>Hinatuan, Surigao del Sur</td><td>34.5</td></tr>
-            <tr><td>Catbalogan City</td><td>33.8</td></tr>
-            <tr><td>Davao Intl Airport</td><td>33.2</td></tr>
-          </tbody>
-        </table>
-        <p class="mt-2">Temperature data from PAGASA’s official June 8 report. :contentReference[oaicite:5]{index=5}</p>
+        <p class="mt-2">
+          These forecasts are based on PAGASA’s 24‑hour outlook for June 11.
+        </p>
       </div>
     </div>
   </div>
+
 
   <script>
     document.querySelectorAll('.accordion-header').forEach(h => {
@@ -142,3 +186,8 @@
   </script>
 </body>
 </html>
+
+
+
+
+
