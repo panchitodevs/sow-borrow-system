@@ -39,7 +39,7 @@
   <div class="marquee">DAILY WEATHER</div>
   <div class="top-bar">
     <div class="image-box">
-      <img src="{{ asset('images/date.png') }}" alt="Weather" width= "100%">
+      <img src="{{ asset('images/date.png') }}" alt="Weather" >
     </div>
     <div class="clock-box">
       <h4 style="margin: 0;">
