@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoaningController;
 use App\Http\Controllers\VestmentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TrackerController;
 
 
 /*
@@ -100,6 +101,12 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
+//tracker
+Route::middleware(['auth'])->group(function () {
+    Route::get('/tracker', [TrackerController::class, 'index'])->name('tracker.index');
+    Route::post('/tracker/pay/{id}', [TrackerController::class, 'pay'])->name('loan.tracker.pay');
+    Route::patch('/tracker/investment/{id}', [TrackerController::class, 'updateInvestment'])->name('investment.tracker.update');
+});
 
 // Logout route
 Route::post('/logout', function () {

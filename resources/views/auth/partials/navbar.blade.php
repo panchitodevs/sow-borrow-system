@@ -27,7 +27,7 @@
         </button>
         <div id="dropdownMenu" class="absolute right-0 mt-2 w-40 bg-white text-black border rounded shadow-lg hidden z-50">
           <a href="{{ url('/profile') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">My Profile</a>
-          <a href="{{ url('/profile') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Tracker</a>
+          <a href="{{ url('/tracker') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Tracker</a>
           <a href="{{ url('/admin/dashboard') }}" class="block px-4 py-2 text-sm hover:bg-gray-100">Admin</a>
           <form method="POST" action="{{ route('logout') }}" onsubmit="return confirm('Are you sure you want to logout?');">
             @csrf
