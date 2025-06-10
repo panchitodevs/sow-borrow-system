@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Vestment Management</title>
-    
+    <title>User Management</title>
+
     <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro&display=swap" rel="stylesheet" />
@@ -14,7 +14,7 @@
             background-color: #f5fff5;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3 {
             font-family: 'Playfair Display', serif;
         }
 
@@ -45,8 +45,8 @@
 
 <div class="max-w-7xl mx-auto">
     <div class="bg-gradient-to-tr from-green-200 to-green-300 rounded-xl p-8 mb-12 shadow-md text-center">
-        <h1 class="text-4xl text-green-900 font-bold">Vestment Management</h1>
-        <p class="text-green-800 mt-2">View, edit, and manage all vestment entries</p>
+        <h1 class="text-4xl text-green-900 font-bold">User Management</h1>
+        <p class="text-green-800 mt-2">Manage platform users, roles, and permissions</p>
     </div>
 
     @if(session('success'))
@@ -56,58 +56,47 @@
     @endif
 
     <div class="overflow-x-auto bg-white shadow-xl rounded-xl p-6">
-        <h2 class="text-2xl text-green-700 mb-6 text-center">📋 All Vestment Records</h2>
+        <h2 class="text-2xl text-green-700 mb-6 text-center">👥 All Users</h2>
 
         <table class="min-w-full table-auto border-collapse border border-green-300 text-sm">
             <thead>
                 <tr>
                     <th class="px-3 py-2 border">ID</th>
-                    <th class="px-3 py-2 border">Amount</th>
-                    <th class="px-3 py-2 border">Type</th>
-                    <th class="px-3 py-2 border">Duration</th>
-                    <th class="px-3 py-2 border">Notes</th>
-                    <th class="px-3 py-2 border">Phone</th>
+                    <th class="px-3 py-2 border">Name</th>
                     <th class="px-3 py-2 border">Email</th>
-                    <th class="px-3 py-2 border">Status</th>
+                    <th class="px-3 py-2 border">Phone</th>
+                    <th class="px-3 py-2 border">Role</th>
+                    <th class="px-3 py-2 border">Created</th>
                     <th class="px-3 py-2 border">Actions</th>
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach($vests as $vest)
+                @foreach($users as $user)
                     <tr class="hover:bg-green-50 transition-all">
-                        <form method="POST" action="{{ route('vest.update', $vest->id) }}" onsubmit="return confirm('Save changes to this vestment?')">
+                        <form method="POST" action="{{ route('users.update', $user->id) }}" onsubmit="return confirm('Save changes to this user?')">
                             @csrf
                             @method('PUT')
-                            <td class="px-3 py-2 border">{{ $vest->id }}</td>
+                            <td class="px-3 py-2 border">{{ $user->id }}</td>
                             <td class="px-3 py-2 border">
-                                <input type="number" name="amount" value="{{ $vest->amount }}">
+                                <input type="text" name="name" value="{{ $user->name }}">
                             </td>
                             <td class="px-3 py-2 border">
-                                <input type="text" name="investment_type" value="{{ $vest->investment_type }}">
+                                <input type="email" name="email" value="{{ $user->email }}">
                             </td>
                             <td class="px-3 py-2 border">
-                                <input type="number" name="duration_months" value="{{ $vest->duration_months }}">
+                                <input type="text" name="phone" value="{{ $user->phone }}">
                             </td>
                             <td class="px-3 py-2 border">
-                                <input type="text" name="notes" value="{{ $vest->notes }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <input type="text" name="phone" value="{{ $vest->phone }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <input type="email" name="email" value="{{ $vest->email }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <select name="status">
-                                    <option value="pending" {{ $vest->status === 'pending' ? 'selected' : '' }}>Pending</option>
-                                    <option value="active" {{ $vest->status === 'active' ? 'selected' : '' }}>Active</option>
-                                    <option value="withdrawn" {{ $vest->status === 'withdrawn' ? 'selected' : '' }}>Withdrawn</option>
+                                <select name="role">
+                                    <option value="user" {{ $user->role === 'user' ? 'selected' : '' }}>User</option>
+                                    <option value="admin" {{ $user->role === 'admin' ? 'selected' : '' }}>Admin</option>
                                 </select>
                             </td>
+                            <td class="px-3 py-2 border">{{ $user->created_at->format('Y-m-d') }}</td>
                             <td class="px-3 py-2 border flex flex-col space-y-2">
                                 <button type="submit" class="btn-save">Save</button>
                         </form>
-                        <form method="POST" action="{{ route('vest.destroy', $vest->id) }}" onsubmit="return confirm('Delete this vestment?')">
+                        <form method="POST" action="{{ route('users.destroy', $user->id) }}" onsubmit="return confirm('Delete this user?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn-delete">Delete</button>
