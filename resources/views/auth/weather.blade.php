@@ -75,7 +75,7 @@
             <tr class="color-orange"><td>Subic Bay</td><td>Zambales</td><td>42</td><td>Danger</td></tr>
           </tbody>
         </table>
-        <p class="mt-4">Based on DOST‑PAGASA’s iHeatMap forecast, several locations will experience heat indices between 41–44 °C on June 11, placing them in the Danger to Extreme Danger categories.</p>
+        <p class="mt-4">Based on DOST‑PAGASA’s iHeatMap forecast, several locations will experience heat indices between 41–44 °C on June 14, placing them in the Danger to Extreme Danger categories.</p>
       </div>
     </div>
 
@@ -103,27 +103,27 @@
           <tbody>
             <tr>
               <td>Manila / Las Piñas</td>
-              <td>Overcast & Thunderstorms</td>
-              <td>Southwest Monsoon</td>
-              <td>Heavy rain, potential flooding</td>
+              <td>Thunderstorms & Heavy Rain</td>
+              <td>Active Southwest Monsoon</td>
+              <td>Flooding in low-lying areas, traffic disruptions</td>
             </tr>
             <tr>
               <td>Cebu</td>
-              <td>Showers</td>
-              <td>Moist Habagat flow</td>
-              <td>Wet roads, localized flooding</td>
+              <td>Intermittent Showers</td>
+              <td>Localized thunderstorms</td>
+              <td>Possible flash floods, slippery roads</td>
             </tr>
             <tr>
               <td>Davao</td>
-              <td>Scattered Rain</td>
-              <td>Monsoon influence</td>
-              <td>Isolated showers</td>
+              <td>Partly Cloudy, Isolated Rain</td>
+              <td>Moist air from the south</td>
+              <td>Generally fair, brief downpours</td>
             </tr>
             <tr>
               <td>Baguio</td>
-              <td>Cloudy</td>
-              <td>High humidity</td>
-              <td>Cooler, damp</td>
+              <td>Cloudy, Light Rain</td>
+              <td>Monsoon trough</td>
+              <td>Cool, foggy, minor landslides possible</td>
             </tr>
           </tbody>
         </table>
@@ -138,7 +138,7 @@
         <span class="accordion-icon">▼</span>
       </div>
       <div class="accordion-content">
-        <h3>Forecast Abs. Min & Max (Philippine Stations)</h3>
+        <h3>Forecast Abs. Min & Max (Philippine Stations) — June 14</h3>
         <table>
           <thead>
             <tr>
@@ -149,32 +149,31 @@
           <tbody>
             <tr>
               <td>Baguio City</td>
-              <td>19 – 24</td>
+              <td>18 – 23</td>
             </tr>
             <tr>
               <td>Tuguegarao City</td>
-              <td>25 – 36</td>
+              <td>26 – 37</td>
             </tr>
             <tr>
               <td>Manila</td>
-              <td>26 – 30</td>
+              <td>27 – 32</td>
             </tr>
             <tr>
               <td>Legazpi</td>
-              <td>25 – 32</td>
+              <td>25 – 33</td>
             </tr>
             <tr>
               <td>Davao Intl Airport</td>
-              <td>24 – 32</td>
+              <td>25 – 33</td>
             </tr>
           </tbody>
         </table>
         <p class="mt-2">
-          These forecasts are based on PAGASA’s 24‑hour outlook for June 11.
+          These forecasts are based on PAGASA’s 24‑hour outlook for <strong>June 14</strong>.
         </p>
       </div>
     </div>
-  </div>
 
 
   <script>
