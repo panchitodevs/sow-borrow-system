@@ -75,7 +75,7 @@
             <tr class="color-orange"><td>Subic Bay</td><td>Zambales</td><td>42</td><td>Danger</td></tr>
           </tbody>
         </table>
-        <p class="mt-4">Based on DOST‑PAGASA’s iHeatMap forecast, several locations will experience heat indices between 41–44 °C on June 11, placing them in the Danger to Extreme Danger categories.</p>
+        <p class="mt-4">Based on DOST‑PAGASA’s iHeatMap forecast, several locations will experience heat indices between 41–44 °C on June 14, placing them in the Danger to Extreme Danger categories.</p>
       </div>
     </div>
 
@@ -170,7 +170,7 @@
           </tbody>
         </table>
         <p class="mt-2">
-          These forecasts are based on PAGASA’s 24‑hour outlook for June 11.
+          These forecasts are based on PAGASA’s 24‑hour outlook for June 14.
         </p>
       </div>
     </div>

@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id('id')->unique();
+            $table->uuid('uuid')->unique();
             $table->string('atm_account_number')->unique();
             $table->string('atm_pin');
             $table->string('first_name');
