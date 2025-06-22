@@ -92,9 +92,7 @@
 </section>
 
 <!-- Footer -->
-<footer class="bg-gray-900 text-white text-center py-6 text-sm" data-aos="fade-up">
-  <p>&copy; 2025 <strong>Sow & Borrow</strong>. All rights reserved.</p>
-</footer>
+@include ('auth.partials.footer')
 
 <!-- AOS Init -->
 <script>

@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
+use Carbon\Carbon;
+
 
 
 class AuthController extends Controller
@@ -19,7 +21,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'atm_account_number' => 'required|unique:users',
+            'atm_account_number' => 'required|digits:13',
             'atm_pin' => 'required|min:4',
             'first_name' => 'required',
             'middle_name'=> 'required',
@@ -27,12 +29,14 @@ class AuthController extends Controller
             'gender' => 'required',
             'civil_status' => 'required',
             'email' => 'required|email|unique:users',
-            'phone' => 'required',
+            'phone' => 'required|regex:/^\+639\d{9}$/',
             'barangay' => 'required',
             'street' => 'required',
-            'city' => 'required',
-            'zip' => 'required',
-            'dob' => 'required|date',
+            'dob' => ['required', 'date', function ($attribute, $value, $fail) {
+                if (Carbon::parse($value)->age < 18) {
+                    $fail('You must be at least 18 years old to register.');
+                }
+            }],
             'password' => [
                 'required',
                 'confirmed',
@@ -63,8 +67,6 @@ class AuthController extends Controller
             'phone' => $request->phone,
             'barangay' => $request->barangay,
             'street' => $request->street,
-            'city' => $request->city,
-            'zip' => $request->zip,
             'dob' => $request->dob,
             'password' => Hash::make($request->password),
         ]);

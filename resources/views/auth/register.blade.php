@@ -148,27 +148,35 @@
             <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="Phone Number" required>
          </div>
          <div class="form-group">
-            <label for="barangay">Barangay:</label>
-            <input type="text" name="barangay" value="{{ old('barangay') }}" placeholder="Barangay" required>
-         </div>
+         <label for="barangay">Barangay</label>
+         <select name="barangay" id="barangay" required>
+            <option value="">Select Barangay</option>
+            <option value="Abaca" {{ old('barangay') == 'Abaca' ? 'selected' : '' }}>Abaca</option>
+            <option value="Baybayon" {{ old('barangay') == 'Baybayon' ? 'selected' : '' }}>Baybayon</option>
+            <option value="Bato" {{ old('barangay') == 'Bato' ? 'selected' : '' }}>Bato</option>
+            <option value="Bulawan" {{ old('barangay') == 'Bulawan' ? 'selected' : '' }}>Bulawan</option>
+            <option value="Cabulao" {{ old('barangay') == 'Cabulao' ? 'selected' : '' }}>Cabulao</option>
+            <option value="Del Mar" {{ old('barangay') == 'Del Mar' ? 'selected' : '' }}>Del Mar</option>
+            <option value="Lungsod Daan" {{ old('barangay') == 'Lungsod Daan' ? 'selected' : '' }}>Lungsod Daan</option>
+            <option value="Minol" {{ old('barangay') == 'Minol' ? 'selected' : '' }}>Minol</option>
+            <option value="Poblacion I" {{ old('barangay') == 'Poblacion I' ? 'selected' : '' }}>Poblacion I</option>
+            <option value="Poblacion II" {{ old('barangay') == 'Poblacion II' ? 'selected' : '' }}>Poblacion II</option>
+            <option value="San Jose" {{ old('barangay') == 'San Jose' ? 'selected' : '' }}>San Jose</option>
+            <option value="San Roque" {{ old('barangay') == 'San Roque' ? 'selected' : '' }}>San Roque</option>
+            <option value="Tangkigan" {{ old('barangay') == 'Tangkigan' ? 'selected' : '' }}>Tangkigan</option>
+            <option value="Tugas" {{ old('barangay') == 'Tugas' ? 'selected' : '' }}>Tugas</option>
+            <option value="Valaga" {{ old('barangay') == 'Valaga' ? 'selected' : '' }}>Valaga</option>
+         </select>
+       </div>
+
          <div class="form-group">
             <label for="street">Street:</label>
             <input type="text" name="street" value="{{ old('street') }}" placeholder="Street" required>
          </div>
          <div class="form-group">
-            <label for="city">City:</label>
-            <input type="text" name="city" value="{{ old('city') }}" placeholder="City" required>
-         </div>
-         <div class="form-group">
-            <label for="zip">ZIP Code:</label>
-            <input type="text" name="zip" value="{{ old('zip') }}" placeholder="ZIP Code" required>
-         </div>
-         <div class="form-group">
             <label for="dob">Date of Birth:</label>
             <input type="date" name="dob" value="{{ old('dob') }}" required>
          </div>
-
-
          <h4 style="color:darkgreen">Step 3: Password</h4>
          <hr style="width: 1000px;"><br>
          <div class="form-group">
@@ -179,6 +187,12 @@
             <label for="password_confirmation">Confirm Password:</label>
             <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
          </div>
+               <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+         @csrf
+         <label for="profile_image">Profile Image</label>
+         <input type="file" name="profile_image" accept="image/*">
+      </form>
+
          <hr style="width: 1000px;"><br>
          <div class="form-actions">
             <button type="submit">Submit</button>

@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 use App\Models\User;
+use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
@@ -15,6 +18,16 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge([
+            // Format phone to +63 if starts with 09
+            'phone' => preg_replace('/^09/', '+639', $request->phone),
+        ]);
+        // Handle the image upload
+        $imagePath = null;
+        if ($request->hasFile('profile_image')) {
+            $imagePath = $request->file('profile_image')->store('profile_images', 'public');
+        }
+
         $request->validate([
             'atm_account_number' => 'required|digits:13',
             'atm_pin' => 'required|digits:6',
@@ -24,12 +37,15 @@ class RegisterController extends Controller
             'gender' => 'required',
             'civil_status' => 'required',
             'email' => 'required|email|unique:users,email',
-            'phone' => 'required|digits_between:10,15',
+            'phone' => 'required|regex:/^\+639\d{9}$/',
             'barangay' => 'required|string',
             'street' => 'required|string',
-            'city' => 'required|string',
-            'zip' => 'required|digits:4',
-            'dob' => 'required|date',
+            'dob' => ['required', 'date', function ($attribute, $value, $fail) {
+                if (Carbon::parse($value)->age < 18) {
+                    $fail('You must be at least 18 years old to register.');
+                }
+            }],
+            'profile_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
             'password' => [
                 'required',
                 'confirmed',
@@ -45,6 +61,7 @@ class RegisterController extends Controller
             'password.confirmed' => 'Passwords do not match.',
             'password.min' => 'Password must be at least 8 characters.',
             'password.uncompromised' => 'This password has appeared in a data breach. Please choose another.',
+            'phone.regex' => 'Phone number must be in +63 format with 10 digits after it.'
         ]);
 
         User::create([
@@ -59,13 +76,11 @@ class RegisterController extends Controller
             'phone' => $request->phone,
             'barangay' => $request->barangay,
             'street' => $request->street,
-            'city' => $request->city,
-            'zip' => $request->zip,
             'dob' => $request->dob,
+            'profile_image' => $imagePath,
             'password' => Hash::make($request->password),
         ]);
 
         return redirect()->route('login')->with('success', 'Account created successfully. Please login.');
     }
 }
-

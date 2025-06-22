@@ -25,9 +25,8 @@ return new class extends Migration
             $table->string('phone');
             $table->string('barangay');
             $table->string('street');
-            $table->string('city');
-            $table->string('zip');
             $table->date('dob');
+            $table->string('profile_image')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

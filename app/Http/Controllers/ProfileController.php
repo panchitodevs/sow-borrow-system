@@ -35,6 +35,7 @@ class ProfileController extends Controller
         'city'         => 'nullable|string|max:255',
         'zip'          => 'nullable|string|max:20',
         'dob'          => 'required|date',
+        'profile_image' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
 

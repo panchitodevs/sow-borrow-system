@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
@@ -16,6 +17,10 @@ use App\Http\Controllers\VestmentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TrackerController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\HelpController;
+use App\Http\Controllers\PrivacyPolicyController;
+
 
 
 
@@ -32,31 +37,41 @@ use App\Http\Controllers\TrackerController;
 |
 */
 
+
 Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
+
 
 // Show login form
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
+
 // Handle login
 Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+
 
 // Show registration form
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
 
+
 // Handle registration
 Route::post('/register', [AuthController::class, 'register'])->name('register.store');
 
+
 // home route
-Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home'); 
+Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
+
 
 //weater route
 Route::get('/weather', [WeatherController::class, 'index'])->name('weather');
 
+
 //linkage route
 Route::get('/linkage', [LinkageController::class, 'index'])->name('linkage');
 
+
 //about us route
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+
 
 //loan route
 Route::middleware(['auth'])->group(function() {
@@ -64,23 +79,30 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/loans', [LoanController::class, 'store'])->name('loans.store');
 });
 
+
 //investments route
 Route::middleware(['auth'])->group(function() {
     Route::get('/investments', [InvestmentController::class, 'create'])->name('investments.create');
     Route::post('/investments', [InvestmentController::class, 'store'])->name('investments.store');
 });
 
-//Market Insight route 
+
+//Market Insight route
 Route::get('/market-insights', [MarketInsightController::class, 'index'])->name('market.insights');
+
+
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
+
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
 });
+
+
 
 
 Route::middleware(['auth'])->group(function () {
@@ -91,6 +113,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/loaning/{id}', [LoaningController::class, 'destroy'])->name('loaning.destroy');
 });
 
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/vest', [VestmentController::class, 'index'])->name('vest.index');
     Route::post('/vest', [VestmentController::class, 'store'])->name('vest.store');
@@ -99,14 +122,17 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/vest/{id}', [VestmentController::class, 'destroy'])->name('vest.destroy');
 });
 
+
 //Profile route
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
 
+
 // routes/web.php
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
@@ -114,13 +140,32 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
+
 //tracker
 Route::middleware(['auth'])->group(function () {
     Route::get('/tracker', [TrackerController::class, 'index'])->name('tracker.index');
     Route::post('/tracker/pay/{id}', [TrackerController::class, 'pay'])->name('loan.tracker.pay');
     Route::patch('/tracker/investment/{id}', [TrackerController::class, 'updateInvestment'])->name('investment.tracker.update');
 
+
 });
+
+
+// Feedback routes
+Route::get('/feedback', [FeedbackController::class, 'showForm'])->name('feedback.form');
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
+
+
+// Help routes
+Route::get('/help', [HelpController::class, 'index'])->name('help');
+
+
+
+
+// Privacy Policy routes
+Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy.index');
+Route::get('/privacy-policy/download', [PrivacyPolicyController::class, 'download'])->name('privacy.download');
+
 
 // Logout route
 Route::post('/logout', function () {
@@ -129,3 +174,8 @@ Route::post('/logout', function () {
     request()->session()->regenerateToken();
     return redirect('/login');
 })->name('logout');
+
+
+
+
+

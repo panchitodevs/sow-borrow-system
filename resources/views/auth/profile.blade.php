@@ -31,6 +31,14 @@
   <div class="max-w-3xl mx-auto mt-32 p-6 bg-white shadow-lg rounded">
     <h1 class="text-3xl font-bold text-green-600 mb-6">My Profile</h1>
 
+    <!-- Profile Image -->
+@if(auth()->user()->profile_image)
+  <div class="mb-4 text-center">
+    <img src="{{ asset('storage/' . auth()->user()->profile_image) }}" alt="Profile Image" class="w-32 h-32 rounded-full mx-auto shadow-md object-cover">
+  </div>
+@endif
+
+
 
     @if(session('success'))
       <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
@@ -157,28 +165,6 @@
           <input type="text" id="street" name="street" value="{{ old('street', auth()->user()->street) }}"
             class="w-full px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:border-green-500">
           @error('street')
-            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-          @enderror
-        </div>
-
-
-        <!-- City -->
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="city">City</label>
-          <input type="text" id="city" name="city" value="{{ old('city', auth()->user()->city) }}"
-            class="w-full px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:border-green-500">
-          @error('city')
-            <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
-          @enderror
-        </div>
-
-
-        <!-- ZIP -->
-        <div class="mb-4">
-          <label class="block text-gray-700 text-sm font-bold mb-2" for="zip">ZIP</label>
-          <input type="text" id="zip" name="zip" value="{{ old('zip', auth()->user()->zip) }}"
-            class="w-full px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:border-green-500">
-          @error('zip')
             <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
           @enderror
         </div>
