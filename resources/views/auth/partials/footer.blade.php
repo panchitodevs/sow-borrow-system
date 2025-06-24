@@ -1,6 +1,6 @@
-<footer class="bg-white text-green-900 border-t border-gray-200 mt-16 shadow-inner">
-  <div class="max-w-7xl mx-auto px-8 py-14 grid grid-cols-1 md:grid-cols-4 gap-12 text-base">
-   
+<footer class="bg-white text-green-900 border-t mt-16 border-gray-200 shadow-inner">
+  <div class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-12 text-base">
+    
     <!-- Navigation Links -->
     <div>
       <h2 class="text-lg font-bold mb-4">Quick Links</h2>
@@ -12,7 +12,6 @@
         <li><a href="{{ url('/privacy-policy') }}" target="_blank" class="hover:text-green-600">Privacy Policy</a></li>
       </ul>
     </div>
-
 
     <!-- Social Links -->
     <div>
@@ -30,7 +29,6 @@
       </div>
     </div>
 
-
     <!-- Contact Info -->
     <div>
       <h2 class="text-lg font-bold mb-4">Reach Us</h2>
@@ -41,7 +39,6 @@
       </ul>
     </div>
 
-
     <!-- Branding -->
     <div class="text-center md:text-left">
       <img src="{{ asset('images/logo.png') }}" alt="Sow & Borrow" class="h-14 mx-auto md:mx-0 mb-4" />
@@ -49,6 +46,3 @@
     </div>
   </div>
 </footer>
-
-
-

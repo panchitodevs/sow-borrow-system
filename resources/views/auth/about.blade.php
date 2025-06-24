@@ -98,9 +98,7 @@
 </section>
 
     <!-- Footer -->
-    <footer class="text-center text-sm text-green-800 mt-12" data-aos="fade-up">
-      &copy; 2025 Sow&Borrow Loans. All rights reserved.
-    </footer>
+    @include('auth.partials.footer')
   </div>
 
   <script>

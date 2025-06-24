@@ -1,86 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
   <title>Linkage Section - Sow & Borrow</title>
-
-  <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fonts & Tailwind -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro&display=swap" rel="stylesheet" />
 
   <style>
     body {
-      font-family: 'Source Sans Pro', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
       background-color: #f5fff5;
     }
 
-    h1, h2, h3, h4 {
+    .linkage-section {
+      padding: 50px 20px;
+      background-color: #e8f5e9;
+    }
+
+    .linkage-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .title-box {
+      background: linear-gradient(135deg, #d0f0c0, #a5d6a7);
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .title-box h1 {
       font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      color: #1b5e20;
+      margin: 0;
+    }
+
+    .title-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: #2e7d32;
+      margin-top: 10px;
+    }
+
+    .linkage-category {
+      margin-bottom: 40px;
+    }
+
+    .linkage-category h3 {
+      color: #388e3c;
+      margin-bottom: 15px;
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .partners {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .partner-card {
+      background: white;
+      border: 1px solid #c8e6c9;
+      border-radius: 10px;
+      padding: 20px;
+      width: 250px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      text-align: center;
+    }
+
+    .partner-card h4 {
+      margin: 0 0 10px;
+      color: #2e7d32;
+    }
+
+    .partner-card a {
+      text-decoration: none;
+      color: #2e7d32;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+
+    .partner-card a:hover {
+      color: #1b5e20;
+      text-decoration: underline;
+    }
+
+    .partner-card p {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    @media (max-width: 600px) {
+      .partners {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .partner-card {
+        width: 90%;
+      }
     }
   </style>
+</head>
+<body>
 
   @include('auth.partials.navbar')
-</head>
-<body class="pt-20">
 
-  <section class="py-16 bg-green-50">
-    <div class="max-w-6xl mx-auto px-6">
-
-      <div class="bg-gradient-to-tr from-green-200 to-green-300 rounded-xl p-12 mb-16 shadow-md text-center">
-        <h1 class="text-4xl text-green-900 font-bold">Sow & Borrow</h1>
-        <h2 class="text-2xl text-green-800 mt-4">Our Linkages & Partnerships</h2>
+  <section class="linkage-section">
+    <div class="linkage-container">
+      
+      <!-- Title -->
+      <div class="title-box">
+        <h1>Sow & Borrow</h1>
+        <h2>Our Linkages & Partnerships</h2>
       </div>
 
-      {{-- Banking Partners --}}
-      <div class="mb-16">
-        <h3 class="text-2xl text-green-700 mb-8 text-center">🏦 Banking Partners</h3>
-        <div class="flex flex-wrap justify-center gap-8">
-          <div class="bg-white border border-green-200 rounded-xl p-6 w-64 shadow-sm text-center">
-            <h4 class="text-green-800 font-semibold mb-3">Land Bank of the Philippines</h4>
-            <p class="text-gray-700 text-sm">Offers government-backed agricultural loans.</p>
+      <!-- Banking Partners -->
+      <div class="linkage-category">
+        <h3>🏦 Banking Partners</h3>
+        <div class="partners">
+          <div class="partner-card">
+            <h4><a href="https://www.landbank.com/" target="_blank">Land Bank of the Philippines</a></h4>
+            <p>Offers government-backed agricultural loans.</p>
           </div>
-          <div class="bg-white border border-green-200 rounded-xl p-6 w-64 shadow-sm text-center">
-            <h4 class="text-green-800 font-semibold mb-3">Agricultural Credit Policy Council</h4>
-            <p class="text-gray-700 text-sm">Supports financing programs for farmers.</p>
+          <div class="partner-card">
+            <h4><a href="https://acpc.gov.ph/" target="_blank">Agricultural Credit Policy Council</a></h4>
+            <p>Supports financing programs for farmers.</p>
           </div>
         </div>
       </div>
 
-      {{-- Government Agencies --}}
-      <div class="mb-16">
-        <h3 class="text-2xl text-green-700 mb-8 text-center">🛡️ Government Agencies</h3>
-        <div class="flex flex-wrap justify-center gap-8">
-          <div class="bg-white border border-green-200 rounded-xl p-6 w-64 shadow-sm text-center">
-            <h4 class="text-green-800 font-semibold mb-3">Department of Agriculture</h4>
-            <p class="text-gray-700 text-sm">For farmer databases, programs, or subsidies.</p>
+      <!-- Government Agencies -->
+      <div class="linkage-category">
+        <h3>🛡️ Government Agencies</h3>
+        <div class="partners">
+          <div class="partner-card">
+            <h4><a href="https://www.da.gov.ph/" target="_blank">Department of Agriculture</a></h4>
+            <p>For farmer databases, programs, or subsidies.</p>
           </div>
-          <div class="bg-white border border-green-200 rounded-xl p-6 w-64 shadow-sm text-center">
-            <h4 class="text-green-800 font-semibold mb-3">Department of Trade and Industry</h4>
-            <p class="text-gray-700 text-sm">For agripreneurs and microfinancing.</p>
+          <div class="partner-card">
+            <h4><a href="https://www.dti.gov.ph/" target="_blank">Department of Trade and Industry</a></h4>
+            <p>For agripreneurs and microfinancing.</p>
           </div>
         </div>
       </div>
 
-      {{-- Agri-Tech Partners --}}
-      <div>
-        <h3 class="text-2xl text-green-700 mb-8 text-center">🌱 Agri-Tech Partners</h3>
-        <div class="flex flex-wrap justify-center gap-8">
-          <div class="bg-white border border-green-200 rounded-xl p-6 w-64 shadow-sm text-center">
-            <h4 class="text-green-800 font-semibold mb-3">Cropital</h4>
-            <p class="text-gray-700 text-sm">
-              A crowdfunding platform that connects farmers with individuals who want to invest in agriculture.
-            </p>
+      <!-- Agri-Tech Partners -->
+      <div class="linkage-category">
+        <h3>🌱 Agri-Tech Partners</h3>
+        <div class="partners">
+          <div class="partner-card">
+            <h4><a href="https://www.cropital.com/" target="_blank">Cropital</a></h4>
+            <p>A crowdfunding platform that connects farmers with investors.</p>
           </div>
-          <div class="bg-white border border-green-200 rounded-xl p-6 w-64 shadow-sm text-center">
-            <h4 class="text-green-800 font-semibold mb-3">Agriblocks (by iProcure)</h4>
-            <p class="text-gray-700 text-sm">Uses blockchain technology for tracking the agricultural supply chain.</p>
+          <div class="partner-card">
+            <h4><a href="https://www.iprocure.co.ke/" target="_blank">Agriblocks (by iProcure)</a></h4>
+            <p>Uses blockchain for agricultural supply chain transparency.</p>
           </div>
         </div>
       </div>
 
     </div>
   </section>
+
+  @include('auth.partials.footer')
 
 </body>
 </html>

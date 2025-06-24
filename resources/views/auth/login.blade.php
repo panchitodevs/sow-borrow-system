@@ -1,144 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login - Sow & Borrow</title>
-    <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
-    <style>
-        body {
-            background: url(images/pic1.png) no-repeat center center fixed;
-            background-size: cover;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: flex-end; 
-            align-items: center;
-            height: 100vh;
-            position: relative;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sow and Borrow</title>
 
-        .container {
-            position: relative;
-            margin-right: 40px; 
-            border: 1px solid gray;
-            width: 380px;
-            height: 450px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(255, 255, 255, 0.4);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(33, 33, 33, 0.3);
-            transition: all 0.3s ease-in-out;
-        }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
-        .header {
-            margin-bottom: 20px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-        }
-
-        .body p {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            color: #00000076;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        #user,
-        #pass {
-            width: 228px;
-            height: 40px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 17px;
-            padding-left: 5px;
-            margin-bottom: 10px;
-        }
-
-        .checkbox-container {
-            display: inline-flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        #check {
-            margin-right: 5px;
-        }
-
-        #keep {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 13px;
-            margin: 0;
-        }
-
-        #button1 {
-            width: 228px;
-            height: 40px;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            border: 0.5px #02224a solid;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 17px;
-            cursor: pointer;
-            margin-bottom: 15px;
-        }
-
-        #access,
-        #help {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 13px;
-            text-decoration: none;
-            text-align: center;
-            display: block;
-            color: #02224a;
-            margin-bottom: 2px;
-        }
-
-        #access:hover,
-        #help:hover {
-            text-decoration: underline;
-        }
-
-        #button2 {
-            width: 228px;
-            height: 40px;
-            margin-top: 10px;
-            background-color: #f44336;
-            border: none;
-            color: white;
-            border: 0.5px #02224a solid;
-            border-radius: 4px;
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 17px;
-            cursor: pointer;
-        }
-    </style>
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      font-weight: 500;
+    }
+    h1, h2, label, .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+    .font-brand {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: #4BAE4F;
+      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.5);
+    }
+    input, textarea, select {
+      font-weight: normal;
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <div class="header">
-            <div class="body">
-                <p><b>Sign in to your account</b></p>
+<body class="h-screen flex">
+  <div class="hidden md:block md:w-2/3 bg-cover bg-center" style="background-image: url('{{ asset('images/choco.png') }}'); filter: brightness(0.8);"></div>
 
-                <form action="{{ route('login') }}" method="POST">
-                    @csrf
-                    <input type="text" id="user" name="email" placeholder="Email or number" required>
-                    <input type="password" id="pass" name="password" placeholder="Password" required>
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="check" name="remember">
-                        <label for="check" id="keep">Keep me signed in</label>
-                    </div>
-                    <input type="submit" id="button1" value="Sign In">
-                </form>
+  <div class="w-full md:w-1/3 relative shadow-2xl overflow-hidden">
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/image.png') }}');"></div>
+    <div class="absolute inset-0 bg-[#6B6767] opacity-70"></div>
 
-                <form action="{{ route('register') }}" method="GET">
-                    <input type="submit" id="button2" value="Create Account">
-                </form>
-            </div>
+    <div class="relative z-10 flex flex-col items-center justify-start h-full p-8 text-gray-100 py-8">
+      <div class="absolute top-7 left-4">
+        <img src="{{ asset('images/logo2.png') }}" alt="City Logo" class="rounded-full shadow-lg w-20 h-20">
+      </div>
+
+      <div class="w-full max-w-sm flex flex-col items-center text-center">
+        <div class="mb-0 mt-0 md:mt-0">
+          <img src="{{ asset('images/logo1.png') }}" alt="Sow & Borrow Logo" class="w-70 h-auto drop-shadow-lg mx-auto">
         </div>
+
+        <h1 class="text-4xl font-bold mb-0 mt-0 text-white tracking-wide">LOG IN</h1>
+        <p class="text-gray-300 text-lg mb-8 font-medium mt-2">Welcome back! Please enter your details</p>
+
+        <form method="POST" action="{{ route('login') }}" class="w-full space-y-6">
+          @csrf
+          <div>
+            <label for="email" class="sr-only">Email or Phone Number</label>
+            <input type="email" id="email" name="email" placeholder="Email or Phone Number" required
+              class="w-full px-5 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 
+              border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-400 
+              focus:border-green-400 transition-all duration-200 shadow-md text-lg">
+          </div>
+
+          <div>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" id="password" name="password" placeholder="Password" required
+              class="w-full px-5 py-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 
+              border border-gray-600 focus:outline-none focus:ring-2 focus:ring-green-400 
+              focus:border-green-400 transition-all duration-200 shadow-md text-lg">
+          </div>
+
+          <div class="text-right">
+            <a href="#" class="text-white text-sm font-bold hover:underline transition-colors duration-200">Forgot Password?</a>
+          </div>
+
+          <button type="submit"
+            class="w-full py-3 rounded-lg bg-green-600 text-white text-xl font-bold 
+            hover:bg-green-700 transition-colors duration-200 shadow-lg 
+            transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300">
+            LOGIN
+          </button>
+        </form>
+
+        <div class="mt-8 text-lg">
+          <span class="text-gray-300 font-medium">Don't have account?</span>
+          <a href="{{ url('/register') }}" class="text-white ml-1 font-bold hover:underline transition-colors duration-200">Register here</a>
+        </div>
+      </div>
     </div>
+  </div>
 </body>
 </html>
