@@ -77,53 +77,106 @@
           </div>
         </div>
 
-        {{-- Loan Details --}}
-        <div>
-          <h2 class="text-xl font-semibold text-green-700 mb-4 border-b border-green-200 pb-2">Loan Details</h2>
+      {{-- Loan Details --}}
+      <div x-data="loanCalcApp()" x-init="initializeSlider()">
+  <h2 class="text-xl font-semibold text-green-700 mb-4 border-b border-green-200 pb-2">Loan Details</h2>
 
-          <div class="mb-4">
-            <label class="block mb-1 text-green-800" for="loan_amount">Loan Amount (PHP)</label>
-            <input type="number" name="loan_amount" id="loan_amount" min="1000" step="100" required
-              placeholder="Enter amount you want to borrow"
-              class="w-full border border-green-300 rounded px-4 py-2 focus:ring-2 focus:ring-green-500" />
-          </div>
+  <!-- Amount Input + Range -->
+  <div class="mb-4">
+    <label class="block mb-1 text-green-800">Loan Amount (₱10,000–₱1,000,000)</label>
+    <input type="range" min="10000" max="1000000" step="10000" class="w-full accent-green-700 mb-2"
+      @input="amount = +$event.target.value; sync()" x-bind:value="amount" />
+    <input type="number" name="loan_amount" min="10000" step="1000" required
+      x-model.number="amount" @input="sync()"
+      class="w-full border border-green-300 rounded px-4 py-2 focus:ring-2 focus:ring-green-500" />
+  </div>
 
-          <div class="mb-4">
-            <label class="block mb-1 text-green-800" for="loan_purpose">Loan Purpose</label>
-            <input type="text" name="loan_purpose" id="loan_purpose" required
-              placeholder="E.g., seeds, equipment, fertilizers"
-              class="w-full border border-green-300 rounded px-4 py-2 focus:ring-2 focus:ring-green-500" />
-          </div>
+  <!-- Interest -->
+  <div class="mb-4">
+    <label class="block mb-1 text-green-800">Interest Rate (%)</label>
+    <input type="number" name="interest_rate" readonly x-model="rate"
+      class="w-full border border-green-300 rounded px-4 py-2 bg-gray-100 text-gray-700" />
+  </div>
 
-          <div class="mb-4">
-            <label class="block mb-1 text-green-800" for="loan_term">Loan Term (months)</label>
-            <select name="loan_term" id="loan_term" required
-              class="w-full border border-green-300 rounded px-4 py-2 bg-white focus:ring-2 focus:ring-green-500">
-              <option value="">-- Select Term --</option>
-              <option value="3">3 months</option>
-              <option value="6">6 months</option>
-              <option value="12">12 months</option>
-              <option value="24">24 months</option>
-            </select>
-          </div>
+  <!-- Term -->
+  <div class="mb-4">
+    <label class="block mb-1 text-green-800">Loan Term (months)</label>
+    <input type="number" name="loan_term" readonly x-model="term"
+      class="w-full border border-green-300 rounded px-4 py-2 bg-gray-100 text-gray-700" />
+  </div>
 
-          <div class="mb-4">
-            <label class="block mb-1 text-green-800" for="repayment_schedule">Repayment Schedule</label>
-            <select name="repayment_schedule" id="repayment_schedule" required
-              class="w-full border border-green-300 rounded px-4 py-2 bg-white focus:ring-2 focus:ring-green-500">
-              <option value="">-- Select Schedule --</option>
-              <option value="Monthly">Monthly</option>
-              <option value="Quarterly">Quarterly</option>
-            </select>
-          </div>
+  <!-- Monthly Repayment -->
+  <div class="mb-4">
+    <label class="block mb-1 text-green-800">Estimated Monthly Payment</label>
+    <input type="text" readonly :value="formattedMonthly()" class="w-full border border-green-300 rounded px-4 py-2 bg-gray-100 text-gray-700" />
+  </div>
 
-          <div>
-            <label class="block mb-1 text-green-800" for="collateral">Collateral (optional)</label>
-            <input type="text" name="collateral" id="collateral"
-              placeholder="Describe collateral if any"
-              class="w-full border border-green-300 rounded px-4 py-2 focus:ring-2 focus:ring-green-500" />
-          </div>
-        </div>
+  <!-- Purpose -->
+  <div class="mb-4">
+    <label class="block mb-1 text-green-800" for="loan_purpose">Loan Purpose</label>
+    <input type="text" name="loan_purpose" id="loan_purpose" required
+      placeholder="E.g., seeds, fertilizers, tools"
+      class="w-full border border-green-300 rounded px-4 py-2 focus:ring-2 focus:ring-green-500" />
+  </div>
+
+  <!-- Repayment Schedule -->
+  <div class="mb-4">
+    <label class="block mb-1 text-green-800" for="repayment_schedule">Repayment Schedule</label>
+    <select name="repayment_schedule" id="repayment_schedule" required
+      class="w-full border border-green-300 rounded px-4 py-2 bg-white focus:ring-2 focus:ring-green-500">
+      <option value="">-- Select --</option>
+      <option value="Monthly">Monthly</option>
+      <option value="Quarterly">Quarterly</option>
+    </select>
+  </div>
+
+  <!-- Collateral (Required) -->
+  <div class="mb-4">
+    <label class="block mb-1 text-green-800" for="collateral">Collateral</label>
+    <input type="text" name="collateral" id="collateral" required
+      placeholder="Enter your collateral"
+      class="w-full border border-green-300 rounded px-4 py-2 focus:ring-2 focus:ring-green-500" />
+  </div>
+</div>
+
+<!-- Alpine.js & Logic -->
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+<script>
+  function loanCalcApp() {
+    return {
+      amount: 10000,
+      rate: 12,
+      term: 6,
+      initializeSlider() {
+        this.sync();
+      },
+      sync() {
+        // Adjust interest & term based on amount
+        if (this.amount <= 100000) {
+          this.rate = 12;
+          this.term = 6;
+        } else if (this.amount <= 300000) {
+          this.rate = 10;
+          this.term = 12;
+        } else if (this.amount <= 600000) {
+          this.rate = 8;
+          this.term = 18;
+        } else {
+          this.rate = 6;
+          this.term = 24;
+        }
+      },
+      formattedMonthly() {
+        const r = this.rate / 100 / 12;
+        const n = this.term;
+        const m = this.amount * r / (1 - Math.pow(1 + r, -n));
+        return `₱${m.toFixed(2).toLocaleString()}`;
+      }
+    }
+  }
+</script>
+
+
 
         {{-- Submit --}}
         <button type="submit"

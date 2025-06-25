@@ -1,24 +1,14 @@
-<!-- resources/views/market-insights.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sow&Borrow Market Insights - Interactive</title>
+  <title>Sow&Borrow Market Insights - Mabini, Bohol</title>
   <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- AOS (Animate on Scroll) -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+Pro&family=Pacifico&display=swap" rel="stylesheet" />
-
-  <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
@@ -32,188 +22,203 @@
     .bg-overlay {
       background: linear-gradient(to bottom right, #ecfccb, #bbf7d0);
     }
-    input, select {
-      outline: none;
-    }
-    .tab-content {
-      display: none;
-    }
-    .tab-content.active {
-      display: block;
-    }
   </style>
-  @include('auth.partials.navbar')
 </head>
-<body class="pt-20" >
-  <div class="bg-overlay min-h-screen flex flex-col">
-    <header class="bg-gradient-to-r from-green-700 to-lime-600 text-white py-12 shadow-lg" data-aos="fade-down">
-      <div class="max-w-7xl mx-auto text-center px-6">
-        <h1 class="text-5xl font-bold mb-2 brand">Sow&Borrow Market Insights</h1>
-        <p class="text-lg italic tracking-wide">Empowering growth through informed farming decisions</p>
+<body class="pt-20">
+
+<!-- Navbar -->
+@include('auth.partials.navbar')
+
+<!-- Header -->
+<header class="bg-gradient-to-r from-green-700 to-lime-600 text-white py-12 shadow-lg" data-aos="fade-down">
+  <div class="max-w-7xl mx-auto text-center px-6">
+    <h1 class="text-5xl font-bold brand mb-2">Sow&Borrow Market Insights</h1>
+    <p class="text-lg italic tracking-wide">Empowering Mabini, Bohol through informed farming decisions</p>
+  </div>
+</header>
+
+<!-- Main Section -->
+<main class="bg-overlay py-10 px-4 md:px-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+
+   
+    <!-- Loan Calculator -->
+    <section class="bg-white rounded-2xl p-8 shadow-xl" data-aos="zoom-in">
+      <h2 class="text-2xl font-bold text-green-800 mb-4">Loan Calculator</h2>
+      <label class="text-sm font-medium">Loan Amount (₱10,000–₱1,000,000):</label>
+      <input type="range" id="loanAmount" min="10000" max="1000000" step="10000"
+             class="w-full accent-green-700 mt-1 mb-2" oninput="updateSliderValue(this.value)">
+      <p class="text-sm mb-4">Selected: ₱<span id="loanAmountDisplay">10000</span></p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-sm font-medium">Interest Rate (%)</label>
+          <input type="number" id="interestRate" class="w-full border rounded-xl p-2 bg-gray-100" readonly>
+        </div>
+        <div>
+          <label class="text-sm font-medium">Loan Term (months)</label>
+          <input type="number" id="loanTerm" class="w-full border rounded-xl p-2 bg-gray-100" readonly>
+        </div>
       </div>
-    </header>
+      <div id="loanResult" class="mt-4 text-green-800 font-semibold"></div>
+    </section>
 
-    <main class="flex-grow max-w-7xl mx-auto px-6 py-10 space-y-16">
-      <!-- Loan Calculator -->
-      <section class="bg-white rounded-2xl p-8 shadow-lg" data-aos="zoom-in">
-        <h2 class="text-2xl font-semibold mb-4 text-green-800">Loan Calculator</h2>
-        <form id="loanForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label for="loanAmount" class="block mb-1 text-sm font-medium">Loan Amount (₱):</label>
-            <input type="number" id="loanAmount" name="loanAmount" class="w-full border rounded-xl p-2" required>
-          </div>
-          <div>
-            <label for="interestRate" class="block mb-1 text-sm font-medium">Interest Rate (%):</label>
-            <input type="number" id="interestRate" name="interestRate" class="w-full border rounded-xl p-2" step="0.1" required>
-          </div>
-          <div>
-            <label for="loanTerm" class="block mb-1 text-sm font-medium">Loan Term (months):</label>
-            <input type="number" id="loanTerm" name="loanTerm" class="w-full border rounded-xl p-2" required>
-          </div>
-          <div class="flex items-end">
-            <button type="submit" class="bg-green-700 text-white px-6 py-2 rounded-xl hover:bg-green-800 transition w-full">Calculate</button>
-          </div>
-        </form>
-        <div id="loanResult" class="mt-6 text-green-800 text-lg font-semibold hidden"></div>
-      </section>
+    <!-- Crop Pricing -->
+    <section class="bg-white rounded-2xl p-8 shadow-xl" data-aos="fade-right">
+      <h2 class="text-2xl font-bold text-green-800 mb-4">Mabini Crop Pricing</h2>
+      <ul class="list-disc pl-5 text-green-900 space-y-2">
+        <li>Rice (Palay) – ₱20,000/ton</li>
+        <li>Corn – ₱17,500/ton</li>
+        <li>Coconut (Copra) – ₱35,000/ton</li>
+        <li>Banana (Saba) – ₱12,000/ton</li>
+        <li>Cassava – ₱14,000/ton</li>
+      </ul>
+    </section>
 
-      <!-- Market Trends Chart -->
-      <section class="bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-up">
-        <h2 class="text-2xl font-semibold mb-4 text-green-800">Market Trends</h2>
-        <canvas id="priceChart" height="120"></canvas>
-      </section>
+    <!-- Market Trends -->
+    <section class="bg-white rounded-2xl p-8 shadow-xl" data-aos="fade-up">
+      <h2 class="text-2xl font-bold text-green-800 mb-4">Market Trends</h2>
+      <canvas id="priceChart" height="120"></canvas>
+    </section>
 
-      <!-- Loan Summary Table -->
-      <section class="bg-white rounded-2xl p-8 shadow-lg overflow-auto" data-aos="fade-left">
-        <h2 class="text-2xl font-semibold mb-4 text-green-800">Recent Loan Summaries</h2>
-        <table class="w-full border border-gray-300 text-sm">
-          <thead class="bg-green-100 text-green-900">
-            <tr>
-              <th class="p-2 text-left">Farmer</th>
-              <th class="p-2 text-left">Loan Amount</th>
-              <th class="p-2 text-left">Rate</th>
-              <th class="p-2 text-left">Term</th>
-              <th class="p-2 text-left">Monthly Repayment</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr>
-              <td class="p-2">Adaeze N.</td>
-              <td class="p-2">₱500,000</td>
-              <td class="p-2">10%</td>
-              <td class="p-2">12 mo</td>
-              <td class="p-2">₱43,957</td>
-            </tr>
-            <tr>
-              <td class="p-2">Ibrahim S.</td>
-              <td class="p-2">₱300,000</td>
-              <td class="p-2">8%</td>
-              <td class="p-2">6 mo</td>
-              <td class="p-2">₱52,098</td>
-            </tr>
-            <tr>
-              <td class="p-2">Ngozi O.</td>
-              <td class="p-2">₱750,000</td>
-              <td class="p-2">12%</td>
-              <td class="p-2">18 mo</td>
-              <td class="p-2">₱49,876</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+    <!-- Loan Summary Cards -->
+  <section class="bg-white rounded-2xl p-8 shadow-xl" data-aos="zoom-in">
+  <h2 class="text-2xl font-bold text-green-800 mb-6">Recent Loan Summaries</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+      <p class="text-green-800 font-semibold text-lg">Adaeze N.</p>
+      <p class="text-sm text-gray-700">Loan: ₱500,000</p>
+      <p class="text-sm text-gray-700">Rate: 10%</p>
+      <p class="text-sm text-gray-700">Term: 12 months</p>
+      <p class="text-sm text-green-700 font-semibold">Monthly: ₱43,957</p>
+    </div>
+    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+      <p class="text-green-800 font-semibold text-lg">Ibrahim S.</p>
+      <p class="text-sm text-gray-700">Loan: ₱300,000</p>
+      <p class="text-sm text-gray-700">Rate: 8%</p>
+      <p class="text-sm text-gray-700">Term: 6 months</p>
+      <p class="text-sm text-green-700 font-semibold">Monthly: ₱52,098</p>
+    </div>
+    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+      <p class="text-green-800 font-semibold text-lg">Ngozi O.</p>
+      <p class="text-sm text-gray-700">Loan: ₱750,000</p>
+      <p class="text-sm text-gray-700">Rate: 12%</p>
+      <p class="text-sm text-gray-700">Term: 18 months</p>
+      <p class="text-sm text-green-700 font-semibold">Monthly: ₱49,876</p>
+    </div>
+    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+      <p class="text-green-800 font-semibold text-lg">Carlos R.</p>
+      <p class="text-sm text-gray-700">Loan: ₱250,000</p>
+      <p class="text-sm text-gray-700">Rate: 9%</p>
+      <p class="text-sm text-gray-700">Term: 9 months</p>
+      <p class="text-sm text-green-700 font-semibold">Monthly: ₱30,120</p>
+    </div>
+  </div>
+  </section>
 
-      <!-- Regional Pricing Tabs -->
-      <section class="bg-white rounded-2xl p-8 shadow-lg" data-aos="fade-right">
-        <h2 class="text-2xl font-semibold mb-4 text-green-800">Regional Crop Pricing</h2>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <button onclick="showTab('north')" class="tab-btn bg-green-200 hover:bg-green-300 px-4 py-2 rounded-xl">North</button>
-          <button onclick="showTab('south')" class="tab-btn bg-green-200 hover:bg-green-300 px-4 py-2 rounded-xl">South</button>
-          <button onclick="showTab('west')" class="tab-btn bg-green-200 hover:bg-green-300 px-4 py-2 rounded-xl">West</button>
-          <button onclick="showTab('east')" class="tab-btn bg-green-200 hover:bg-green-300 px-4 py-2 rounded-xl">East</button>
-        </div>
 
-        <div id="north" class="tab-content active">
-          <ul class="list-disc list-inside text-green-900">
-            <li>Maize - ₱32,000/ton</li>
-            <li>Millet - ₱28,000/ton</li>
-            <li>Sorghum - ₱30,000/ton</li>
-          </ul>
-        </div>
-        <div id="south" class="tab-content">
-          <ul class="list-disc list-inside text-green-900">
-            <li>Cassava - ₱25,000/ton</li>
-            <li>Oil Palm - ₱40,000/ton</li>
-            <li>Rubber - ₱50,000/ton</li>
-          </ul>
-        </div>
-        <div id="west" class="tab-content">
-          <ul class="list-disc list-inside text-green-900">
-            <li>Cocoa - ₱60,000/ton</li>
-            <li>Yam - ₱27,000/ton</li>
-            <li>Maize - ₱33,000/ton</li>
-          </ul>
-        </div>
-        <div id="east" class="tab-content">
-          <ul class="list-disc list-inside text-green-900">
-            <li>Rice - ₱35,000/ton</li>
-            <li>Cassava - ₱26,000/ton</li>
-            <li>Oil Palm - ₱42,000/ton</li>
-          </ul>
-        </div>
-      </section>
-    </main>
+    <!-- Tips for Farmers -->
+    <section class="bg-white rounded-2xl p-8 shadow-xl" data-aos="fade-left">
+      <h2 class="text-2xl font-bold text-green-800 mb-4">Smart Farming Tips</h2>
+      <ul class="list-disc pl-5 text-green-900 space-y-2">
+        <li>Use organic compost to enrich soil quality.</li>
+        <li>Harvest early in the morning to retain crop moisture.</li>
+        <li>Stay informed with weather updates before planting.</li>
+        <li>Join local cooperatives for financial and material support.</li>
+        <li>Attend LGU-sponsored agri-trainings to improve techniques.</li>
+      </ul>
+    </section>
+
+    <!-- Summary Cards -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up">
+      <div class="bg-white p-5 rounded-xl shadow flex flex-col items-center">
+        <span class="text-green-600 text-3xl font-bold">₱20K</span>
+        <p class="text-sm text-gray-600">Avg Rice Price/Ton</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow flex flex-col items-center">
+        <span class="text-green-600 text-3xl font-bold">₱1M</span>
+        <p class="text-sm text-gray-600">Max Loan Amount</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow flex flex-col items-center">
+        <span class="text-green-600 text-3xl font-bold">6%</span>
+        <p class="text-sm text-gray-600">Lowest Interest Rate</p>
+      </div>
+      <div class="bg-white p-5 rounded-xl shadow flex flex-col items-center">
+        <span class="text-green-600 text-3xl font-bold">24 mo</span>
+        <p class="text-sm text-gray-600">Max Loan Term</p>
+      </div>
+    </section>
 
   </div>
+</main>
 
-  <script>
-    AOS.init();
+<!-- Footer -->
+@include('auth.partials.footer')
 
-    const loanForm = document.getElementById("loanForm");
-    const loanResult = document.getElementById("loanResult");
+<script>
+  AOS.init();
 
-    loanForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const amount = parseFloat(document.getElementById("loanAmount").value);
-      const rate = parseFloat(document.getElementById("interestRate").value) / 100 / 12;
-      const term = parseInt(document.getElementById("loanTerm").value);
+  const loanAmountInput = document.getElementById("loanAmount");
+  const interestRateInput = document.getElementById("interestRate");
+  const loanTermInput = document.getElementById("loanTerm");
+  const loanResult = document.getElementById("loanResult");
 
-      const monthly = amount * rate / (1 - Math.pow(1 + rate, -term));
-      loanResult.innerHTML = `Monthly Repayment: ₱${monthly.toFixed(2)}`;
-      loanResult.classList.remove("hidden");
-    });
+  function updateSliderValue(value) {
+    document.getElementById("loanAmountDisplay").innerText = parseInt(value).toLocaleString();
 
-    const ctx = document.getElementById("priceChart").getContext("2d");
-    new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-        datasets: [{
-          label: "Maize Price (₱/ton)",
-          data: [32000, 31500, 33000, 34000, 33500, 35000],
-          backgroundColor: "rgba(34, 197, 94, 0.2)",
-          borderColor: "rgba(34, 197, 94, 1)",
-          borderWidth: 2,
-          fill: true,
-          tension: 0.4
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: { display: true }
-        },
-        scales: {
-          y: { beginAtZero: false }
-        }
-      }
-    });
-
-    function showTab(region) {
-      document.querySelectorAll(".tab-content").forEach(tab => tab.classList.remove("active"));
-      document.getElementById(region).classList.add("active");
+    let rate, term;
+    if (value <= 100000) {
+      rate = 12;
+      term = 6;
+    } else if (value <= 300000) {
+      rate = 10;
+      term = 12;
+    } else if (value <= 600000) {
+      rate = 8;
+      term = 18;
+    } else {
+      rate = 6;
+      term = 24;
     }
-  </script>
-  {{-- Footer --}}
-  @include('auth.partials.footer')
+
+    interestRateInput.value = rate;
+    loanTermInput.value = term;
+    autoCalculate(parseFloat(value), rate, term);
+  }
+
+  function autoCalculate(amount, rate, term) {
+    const monthlyRate = rate / 100 / 12;
+    const monthly = amount * monthlyRate / (1 - Math.pow(1 + monthlyRate, -term));
+    loanResult.innerHTML = `Monthly Repayment: ₱${monthly.toFixed(2).toLocaleString()}`;
+  }
+
+  updateSliderValue(loanAmountInput.value);
+
+  const ctx = document.getElementById("priceChart").getContext("2d");
+  new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+      datasets: [{
+        label: "Palay Price (₱/ton)",
+        data: [19500, 20000, 20500, 19800, 20200, 20700],
+        backgroundColor: "rgba(34, 197, 94, 0.2)",
+        borderColor: "rgba(34, 197, 94, 1)",
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: true }
+      },
+      scales: {
+        y: { beginAtZero: false }
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
