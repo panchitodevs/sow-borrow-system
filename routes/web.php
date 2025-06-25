@@ -21,6 +21,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\AdminFeedbackController;
+use App\Http\Controllers\FeedController;
 
 
 
@@ -163,6 +164,9 @@ Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.s
 Route::get('/help', [HelpController::class, 'index'])->name('help');
 
 
+// routes/web.php
+Route::get('/feed', [FeedController::class, 'index'])->name('feed.index');
+Route::post('/posts', [FeedController::class, 'store'])->middleware('can:isAdmin')->name('posts.store');
 
 
 // Privacy Policy routes

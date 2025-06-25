@@ -11,7 +11,7 @@
     <!-- Navigation -->
     <div class="flex items-center space-x-6 relative">
       <a href="{{ url('/home') }}" class="font-bold text-black hover:text-green-600">Home</a>
-      <a href="{{ url('/weather') }}" class="font-bold text-black hover:text-green-600">Weather</a>
+      <a href="{{ url('/feed') }}" class="font-bold text-black hover:text-green-600">News</a>
       <a href="{{ url('/market-insights') }}" class="font-bold text-black hover:text-green-600">Market Data</a>
       <a href="{{ url('/loans') }}" class="font-bold text-black hover:text-green-600">Loaning</a>
       <a href="{{ url('/investments') }}" class="font-bold text-black hover:text-green-600">Investing</a>
