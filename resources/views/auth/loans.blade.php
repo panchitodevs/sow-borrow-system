@@ -48,7 +48,11 @@
       @endif
 
       {{-- Loan Form --}}
-      <form action="{{ route('loans.store') }}" method="POST" class="bg-white shadow-lg rounded-2xl p-10 space-y-6 border border-green-100">
+      <form action="{{ route('loans.store') }}" method="POST" class="bg-white shadow-lg rounded-2xl p-10 space-y-6 border border-green-100 mb-20">
+
+        {{-- Form Header --}}
+        
+        {{-- CSRF Token --}}
         @csrf
 
         {{-- User Info --}}

@@ -48,7 +48,9 @@
       @endif
 
       {{-- Investment Form --}}
-      <form action="{{ route('investments.store') }}" method="POST" class="bg-white shadow-lg rounded-2xl p-10 space-y-6 border border-green-100">
+      <form action="{{ route('investments.store') }}" method="POST" class="bg-white shadow-lg rounded-2xl p-10 space-y-6 border border-green-100 mb-20">
+
+
         @csrf
 
         {{-- User Info --}}
