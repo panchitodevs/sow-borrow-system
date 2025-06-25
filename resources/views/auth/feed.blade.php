@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AgriVest Feed</title>
+    <title>Feed</title>
 
     <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>

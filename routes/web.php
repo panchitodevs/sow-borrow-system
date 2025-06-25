@@ -166,7 +166,7 @@ Route::get('/help', [HelpController::class, 'index'])->name('help');
 
 // routes/web.php
 Route::get('/feed', [FeedController::class, 'index'])->name('feed.index');
-Route::post('/posts', [FeedController::class, 'store'])->middleware('can:isAdmin')->name('posts.store');
+Route::post('/posts', [FeedController::class, 'store'])->middleware('auth')->name('posts.store');
 
 
 // Privacy Policy routes
