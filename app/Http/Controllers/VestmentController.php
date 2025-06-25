@@ -32,7 +32,7 @@ class VestmentController extends Controller
 
         Investment::create([
             'user_id' => Auth::id(),
-            'amount' => $request->amount,
+            'amount' => $request->amount,   
             'investment_type' => $request->investment_type,
             'duration_months' => $request->duration_months,
             'notes' => $request->notes,
@@ -72,4 +72,21 @@ class VestmentController extends Controller
         Investment::destroy($id);
         return redirect()->route('vest.index')->with('success', 'Investment deleted!');
     }
+    public function withdraw(Request $request, $id)
+{
+    $request->validate([
+        'withdraw_amount' => 'required|numeric|min:1',
+    ]);
+
+    $investment = Investment::findOrFail($id);
+
+    if ($request->withdraw_amount > $investment->amount) {
+        return back()->with('error', 'Withdrawal amount exceeds investment balance.');
+    }
+
+    $investment->amount -= $request->withdraw_amount;
+    $investment->save();
+
+    return back()->with('success', 'Withdrawal successful!');
+}
 }

@@ -147,6 +147,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tracker', [TrackerController::class, 'index'])->name('tracker.index');
     Route::post('/tracker/pay/{id}', [TrackerController::class, 'pay'])->name('loan.tracker.pay');
     Route::patch('/tracker/investment/{id}', [TrackerController::class, 'updateInvestment'])->name('investment.tracker.update');
+    Route::post('/investor/withdraw/{id}', [VestmentController::class, 'withdraw'])->name('investor.withdraw');
+
 
 
 });
