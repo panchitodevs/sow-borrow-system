@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us - Sow&Borrow Loans</title>
+  <title>About Us</title>
   <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+Pro&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>

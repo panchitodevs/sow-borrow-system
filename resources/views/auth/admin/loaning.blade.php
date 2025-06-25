@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Loan Management</title>
+    
 
     <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
