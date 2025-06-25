@@ -30,8 +30,6 @@ class User extends Authenticatable
         'phone',
         'barangay',
         'street',
-        'city',
-        'zip',
         'dob',
         'password',
         'role', // ✅ Required for RBAC
