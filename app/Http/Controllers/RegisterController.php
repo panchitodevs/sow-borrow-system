@@ -32,7 +32,7 @@ class RegisterController extends Controller
             'atm_account_number' => 'required|digits:13',
             'atm_pin' => 'required|digits:6',
             'first_name' => 'required|string|max:255',
-            'middle_name' => 'required|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
             'last_name' => 'required|string|max:255',
             'gender' => 'required',
             'civil_status' => 'required',

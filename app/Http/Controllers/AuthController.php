@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
 use Carbon\Carbon;
 
-
-
 class AuthController extends Controller
 {
     public function showRegisterForm()
@@ -20,18 +18,23 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
+        $request->merge([
+            // Optional: Format phone to +63 if starts with 09
+            'phone' => preg_replace('/^09/', '+639', $request->phone),
+        ]);
+
         $request->validate([
             'atm_account_number' => 'required|digits:13',
-            'atm_pin' => 'required|min:4',
-            'first_name' => 'required',
-            'middle_name'=> 'required',
-            'last_name' => 'required',
+            'atm_pin' => 'required|digits:6',
+            'first_name' => 'required|string|max:255',
+            'middle_name' => 'nullable|string|max:255',
+            'last_name' => 'required|string|max:255',
             'gender' => 'required',
             'civil_status' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email',
             'phone' => 'required|regex:/^\+639\d{9}$/',
-            'barangay' => 'required',
-            'street' => 'required',
+            'barangay' => 'required|string|max:255',
+            'street' => 'required|string|max:255',
             'dob' => ['required', 'date', function ($attribute, $value, $fail) {
                 if (Carbon::parse($value)->age < 18) {
                     $fail('You must be at least 18 years old to register.');
@@ -46,14 +49,14 @@ class AuthController extends Controller
                     ->numbers()
                     ->symbols()
                     ->uncompromised(),
-                        ],
-                    ], [
-                        'password.required' => 'Please enter a password.',
-                        'password.confirmed' => 'Passwords do not match.',
-                        'password.min' => 'Password must be at least 8 characters.',
-                        'password.uncompromised' => 'This password has appeared in a data breach. Please choose another.',
-                    ]);
-        
+            ],
+        ], [
+            'password.required' => 'Please enter a password.',
+            'password.confirmed' => 'Passwords do not match.',
+            'password.min' => 'Password must be at least 8 characters.',
+            'password.uncompromised' => 'This password has appeared in a data breach. Please choose another.',
+            'phone.regex' => 'Phone number must be in +63 format with 10 digits after it.',
+        ]);
 
         User::create([
             'atm_account_number' => $request->atm_account_number,
@@ -66,7 +69,7 @@ class AuthController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'barangay' => $request->barangay,
-            'street' => $request->street,
+            'street' => $request->street,   
             'dob' => $request->dob,
             'password' => Hash::make($request->password),
         ]);

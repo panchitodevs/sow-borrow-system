@@ -96,11 +96,19 @@
          <hr style="width: 1000px;"><br>
          <div class="form-group">
             <label for="atmAccountNumber">ATM Account Number:</label>
-            <input type="text" name="atm_account_number" value="{{ old('atmAccountNumber') }}" placeholder="ATM Account Number" required>
+            <input type="text" name="atm_account_number" 
+       value="{{ old('atm_account_number') }}" 
+       placeholder="ATM Account Number" 
+       required 
+       maxlength="13" 
+       oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 13);">
+
          </div>
          <div class="form-group">
             <label for="atmPin">ATM PIN:</label>
-            <input type="password" name="atm_pin" placeholder="ATM PIN" required>
+            <input type="password" name="atm_pin" placeholder="ATM PIN" required 
+            maxlenght="6"
+            oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0, 6);">
          </div>
 
 
@@ -112,7 +120,7 @@
          </div>
          <div class="form-group">
             <label for="MiddleName">Middle Name:</label>
-            <input type="text" name="middle_name" value="{{ old('MiddleName') }}" placeholder="Middle Name" required>
+            <input type="text" name="middle_name" value="{{ old('MiddleName') }}" placeholder="Middle Name">
          </div>
          <div class="form-group">
             <label for="LastName">Last Name:</label>

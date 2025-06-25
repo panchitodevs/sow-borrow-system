@@ -151,8 +151,26 @@
         <!-- Barangay -->
         <div class="mb-4">
           <label class="block text-gray-700 text-sm font-bold mb-2" for="barangay">Barangay</label>
-          <input type="text" id="barangay" name="barangay" value="{{ old('barangay', auth()->user()->barangay) }}"
+          <select id="barangay" name="barangay" required
             class="w-full px-4 py-2 border rounded shadow-sm focus:outline-none focus:ring focus:border-green-500">
+            <option value="">Select Barangay</option>
+            <option value="Abaca" {{ old('barangay', auth()->user()->barangay) == 'Abaca' ? 'selected' : '' }}>Abaca</option>
+            <option value="Baybayon" {{ old('barangay', auth()->user()->barangay) == 'Baybayon' ? 'selected' : '' }}>Baybayon</option>
+            <option value="Bato" {{ old('barangay', auth()->user()->barangay) == 'Bato' ? 'selected' : '' }}>Bato</option>
+            <option value="Bulawan" {{ old('barangay', auth()->user()->barangay) == 'Bulawan' ? 'selected' : '' }}>Bulawan</option>
+            <option value="Cabulao" {{ old('barangay', auth()->user()->barangay) == 'Cabulao' ? 'selected' : '' }}>Cabulao</option>
+            <option value="Del Mar" {{ old('barangay', auth()->user()->barangay) == 'Del Mar' ? 'selected' : '' }}>Del Mar</option>
+            <option value="Lungsod Daan" {{ old('barangay', auth()->user()->barangay) == 'Lungsod Daan' ? 'selected' : '' }}>Lungsod Daan</option>
+            <option value="Minol" {{ old('barangay', auth()->user()->barangay) == 'Minol' ? 'selected' : '' }}>Minol</option>
+            <option value="Poblacion I" {{ old('barangay', auth()->user()->barangay) == 'Poblacion I' ? 'selected' : '' }}>Poblacion I</option>
+            <option value="Poblacion II" {{ old('barangay', auth()->user()->barangay) == 'Poblacion II' ? 'selected' : '' }}>Poblacion II</option>
+            <option value="San Jose" {{ old('barangay', auth()->user()->barangay) == 'San Jose' ? 'selected' : '' }}>San Jose</option>
+            <option value="San Roque" {{ old('barangay', auth()->user()->barangay) == 'San Roque' ? 'selected' : '' }}>San Roque</option>
+            <option value="Tangkigan" {{ old('barangay', auth()->user()->barangay) == 'Tangkigan' ? 'selected' : '' }}>Tangkigan</option>
+            <option value="Tugas" {{ old('barangay', auth()->user()->barangay) == 'Tugas' ? 'selected' : '' }}>Tugas</option>
+            <option value="Valaga" {{ old('barangay', auth()->user()->barangay) == 'Valaga' ? 'selected' : '' }}>Valaga</option>
+          </select>
+
           @error('barangay')
             <div class="text-red-500 text-xs mt-1">{{ $message }}</div>
           @enderror
