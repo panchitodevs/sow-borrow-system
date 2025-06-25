@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Market Data</title>
+  <title>Sow&Borrow Market Insights - Mabini, Bohol</title>
   <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -40,8 +40,7 @@
 <!-- Main Section -->
 <main class="bg-overlay py-10 px-4 md:px-10">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-
-   
+    
     <!-- Loan Calculator -->
     <section class="bg-white rounded-2xl p-8 shadow-xl" data-aos="zoom-in">
       <h2 class="text-2xl font-bold text-green-800 mb-4">Loan Calculator</h2>
@@ -80,42 +79,6 @@
       <canvas id="priceChart" height="120"></canvas>
     </section>
 
-    <!-- Loan Summary Cards -->
-  <section class="bg-white rounded-2xl p-8 shadow-xl" data-aos="zoom-in">
-  <h2 class="text-2xl font-bold text-green-800 mb-6">Recent Loan Summaries</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-      <p class="text-green-800 font-semibold text-lg">Adaeze N.</p>
-      <p class="text-sm text-gray-700">Loan: ₱500,000</p>
-      <p class="text-sm text-gray-700">Rate: 10%</p>
-      <p class="text-sm text-gray-700">Term: 12 months</p>
-      <p class="text-sm text-green-700 font-semibold">Monthly: ₱43,957</p>
-    </div>
-    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-      <p class="text-green-800 font-semibold text-lg">Ibrahim S.</p>
-      <p class="text-sm text-gray-700">Loan: ₱300,000</p>
-      <p class="text-sm text-gray-700">Rate: 8%</p>
-      <p class="text-sm text-gray-700">Term: 6 months</p>
-      <p class="text-sm text-green-700 font-semibold">Monthly: ₱52,098</p>
-    </div>
-    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-      <p class="text-green-800 font-semibold text-lg">Ngozi O.</p>
-      <p class="text-sm text-gray-700">Loan: ₱750,000</p>
-      <p class="text-sm text-gray-700">Rate: 12%</p>
-      <p class="text-sm text-gray-700">Term: 18 months</p>
-      <p class="text-sm text-green-700 font-semibold">Monthly: ₱49,876</p>
-    </div>
-    <div class="bg-green-50 border border-green-200 rounded-xl p-4">
-      <p class="text-green-800 font-semibold text-lg">Carlos R.</p>
-      <p class="text-sm text-gray-700">Loan: ₱250,000</p>
-      <p class="text-sm text-gray-700">Rate: 9%</p>
-      <p class="text-sm text-gray-700">Term: 9 months</p>
-      <p class="text-sm text-green-700 font-semibold">Monthly: ₱30,120</p>
-    </div>
-  </div>
-  </section>
-
-
     <!-- Tips for Farmers -->
     <section class="bg-white rounded-2xl p-8 shadow-xl" data-aos="fade-left">
       <h2 class="text-2xl font-bold text-green-800 mb-4">Smart Farming Tips</h2>
@@ -128,25 +91,28 @@
       </ul>
     </section>
 
-    <!-- Summary Cards -->
-    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6" data-aos="fade-up">
-      <div class="bg-white p-5 rounded-xl shadow flex flex-col items-center">
-        <span class="text-green-600 text-3xl font-bold">₱20K</span>
-        <p class="text-sm text-gray-600">Avg Rice Price/Ton</p>
-      </div>
-      <div class="bg-white p-5 rounded-xl shadow flex flex-col items-center">
-        <span class="text-green-600 text-3xl font-bold">₱1M</span>
-        <p class="text-sm text-gray-600">Max Loan Amount</p>
-      </div>
-      <div class="bg-white p-5 rounded-xl shadow flex flex-col items-center">
-        <span class="text-green-600 text-3xl font-bold">6%</span>
-        <p class="text-sm text-gray-600">Lowest Interest Rate</p>
-      </div>
-      <div class="bg-white p-5 rounded-xl shadow flex flex-col items-center">
-        <span class="text-green-600 text-3xl font-bold">24 mo</span>
-        <p class="text-sm text-gray-600">Max Loan Term</p>
-      </div>
-    </section>
+    <!-- Summary Cards (Final Section) -->
+<section class="bg-white rounded-2xl p-8 shadow-lg mt-12" data-aos="fade-up">
+  <h2 class="text-2xl font-semibold mb-6 text-green-800">Key Insights Summary</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="bg-green-50 p-5 rounded-xl shadow flex flex-col items-center">
+      <span class="text-green-700 text-3xl font-bold">₱20K</span>
+      <p class="text-sm text-gray-700">Avg Rice Price/Ton</p>
+    </div>
+    <div class="bg-green-50 p-5 rounded-xl shadow flex flex-col items-center">
+      <span class="text-green-700 text-3xl font-bold">₱1M</span>
+      <p class="text-sm text-gray-700">Max Loan Amount</p>
+    </div>
+    <div class="bg-green-50 p-5 rounded-xl shadow flex flex-col items-center">
+      <span class="text-green-700 text-3xl font-bold">6%</span>
+      <p class="text-sm text-gray-700">Lowest Interest Rate</p>
+    </div>
+    <div class="bg-green-50 p-5 rounded-xl shadow flex flex-col items-center">
+      <span class="text-green-700 text-3xl font-bold">24 mo</span>
+      <p class="text-sm text-gray-700">Max Loan Term</p>
+    </div>
+  </div>
+</section>
 
   </div>
 </main>

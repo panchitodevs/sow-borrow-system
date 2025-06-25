@@ -16,48 +16,49 @@
             font-family: 'Playfair Display', serif;
         }
     </style>
-
-    {{-- Navbar --}}
-    @include('auth.partials.navbar')
 </head>
-<body class="pt-20 flex flex-col min-h-screen">
+<body class="min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    @include('auth.partials.navbar')
 
     <!-- Main Content -->
-    <div class="flex-grow">
-        <div class="max-w-7xl mx-auto px-6 pb-20">
-            <!-- Header -->
-            <div class="bg-gradient-to-tr from-green-200 to-green-300 rounded-xl p-8 mb-12 shadow-lg text-center">
-                <h1 class="text-4xl text-green-900 font-bold">🌿 AgriVest Admin Dashboard</h1>
-                <p class="text-green-800 mt-2 text-lg">Manage all operations related to agricultural loans, investments, and users.</p>
+    <main class="flex-grow">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+
+            <!-- Dashboard Header -->
+            <div class="bg-gradient-to-tr from-green-200 to-green-300 rounded-2xl p-10 mb-12 shadow-xl text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-green-900">🌿 AgriVest Admin Dashboard</h1>
+                <p class="text-lg md:text-xl text-green-800 mt-3">Oversee operations for loans, investments, users, and platform feedback.</p>
             </div>
 
-            <!-- Navigation Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <a href="{{ route('loaning.index') }}" class="block bg-white shadow-lg hover:shadow-xl transition-all border border-green-300 rounded-xl p-6 text-center">
+            <!-- Navigation Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <a href="{{ route('loaning.index') }}" class="bg-white border border-green-300 rounded-xl p-6 shadow-md hover:shadow-xl transition text-center">
                     <h3 class="text-xl font-bold text-green-800 mb-2">📄 Manage Loans</h3>
-                    <p class="text-sm text-gray-600">View and update all loan records from farmers and agri-businesses.</p>
+                    <p class="text-gray-600 text-sm">View and manage all loan records from the agricultural sector.</p>
                 </a>
 
-                <a href="{{ route('vest.index') }}" class="block bg-white shadow-lg hover:shadow-xl transition-all border border-yellow-300 rounded-xl p-6 text-center">
+                <a href="{{ route('vest.index') }}" class="bg-white border border-yellow-300 rounded-xl p-6 shadow-md hover:shadow-xl transition text-center">
                     <h3 class="text-xl font-bold text-yellow-800 mb-2">💰 View Investments</h3>
-                    <p class="text-sm text-gray-600">Track and manage all investment entries from stakeholders.</p>
+                    <p class="text-gray-600 text-sm">Track and oversee stakeholder investments in agri-projects.</p>
                 </a>
 
-                <a href="{{ route('users.index') }}" class="block bg-white shadow-lg hover:shadow-xl transition-all border border-yellow-300 rounded-xl p-6 text-center">
-                    <h3 class="text-xl font-bold text-yellow-800 mb-2">👤 Manage Users</h3>
-                    <p class="text-sm text-gray-600">Track and manage all platform users and their access roles.</p>
+                <a href="{{ route('users.index') }}" class="bg-white border border-indigo-300 rounded-xl p-6 shadow-md hover:shadow-xl transition text-center">
+                    <h3 class="text-xl font-bold text-indigo-800 mb-2">👤 Manage Users</h3>
+                    <p class="text-gray-600 text-sm">Control access, roles, and monitor platform user activity.</p>
                 </a>
 
-                <a href="{{ route('admin.feedbacks.index') }}" class="block bg-white shadow-lg hover:shadow-xl transition-all border border-blue-300 rounded-xl p-6 text-center">
+                <a href="{{ route('admin.feedbacks.index') }}" class="bg-white border border-blue-300 rounded-xl p-6 shadow-md hover:shadow-xl transition text-center col-span-full sm:col-span-2 lg:col-span-1">
                     <h3 class="text-xl font-bold text-blue-800 mb-2">📢 View Feedbacks</h3>
-                    <p class="text-sm text-gray-600">Read and respond to feedback submitted by platform users.</p>
+                    <p class="text-gray-600 text-sm">Read and respond to comments and concerns from users.</p>
                 </a>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="mt-auto">
+    <footer class="bg-white shadow mt-auto">
         @include('auth.partials.footer')
     </footer>
 

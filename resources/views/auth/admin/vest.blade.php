@@ -44,9 +44,16 @@
 <body class="pt-20">
 
 <div class="max-w-7xl mx-auto">
-    <div class="bg-gradient-to-tr from-green-200 to-green-300 rounded-xl p-8 mb-12 shadow-md text-center">
+    <div class="bg-gradient-to-tr from-green-200 to-green-300 rounded-xl p-8 mb-6 shadow-md text-center">
         <h1 class="text-4xl text-green-900 font-bold">Vestment Management</h1>
         <p class="text-green-800 mt-2">View, edit, and manage all vestment entries</p>
+    </div>
+
+    <!-- Back to Dashboard Button -->
+    <div class="mb-6">
+        <a href="{{ route('admin.dashboard') }}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded shadow">
+            ← Back to Dashboard
+        </a>
     </div>
 
     @if(session('success'))

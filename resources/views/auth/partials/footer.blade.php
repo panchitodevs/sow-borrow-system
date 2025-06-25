@@ -8,7 +8,7 @@
         <li><a href="{{ url('/feedback') }}" target="_blank" class="hover:text-green-600">Feedback</a></li>
         <li><a href="{{ url('/help') }}" target="_blank" class="hover:text-green-600">Help</a></li>
         <li><a href="{{ url('/about') }}" target="_blank" class="hover:text-green-600">About</a></li>
-        <li><a href="{{ url('/press') }}" target="_blank" class="hover:text-green-600">Press</a></li>
+        <li><a href="{{ url('/feed') }}" target="_blank" class="hover:text-green-600">Press</a></li>
         <li><a href="{{ url('/privacy-policy') }}" target="_blank" class="hover:text-green-600">Privacy Policy</a></li>
       </ul>
     </div>

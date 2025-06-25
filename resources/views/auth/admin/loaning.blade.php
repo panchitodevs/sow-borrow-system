@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Loan Management</title>
     
-
     <link rel="icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Sans+Pro&display=swap" rel="stylesheet" />
@@ -17,23 +16,18 @@
         h1, h2, h3, h4 {
             font-family: 'Playfair Display', serif;
         }
-
         input, select {
             @apply p-2 w-full border border-green-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-400;
         }
-
         table th, table td {
             @apply text-sm text-gray-700;
         }
-
         table th {
             @apply bg-green-100 font-semibold;
         }
-
         .btn-save {
             @apply text-green-700 hover:text-white hover:bg-green-600 px-3 py-1 rounded-md transition;
         }
-
         .btn-delete {
             @apply text-red-600 hover:text-white hover:bg-red-600 px-3 py-1 rounded-md transition;
         }
@@ -43,9 +37,16 @@
 <body class="pt-20">
 
 <div class="max-w-7xl mx-auto">
-    <div class="bg-gradient-to-tr from-green-200 to-green-300 rounded-xl p-8 mb-12 shadow-md text-center">
+    <div class="bg-gradient-to-tr from-green-200 to-green-300 rounded-xl p-8 mb-4 shadow-md text-center">
         <h1 class="text-4xl text-green-900 font-bold">Loan Management</h1>
         <p class="text-green-800 mt-2">View, edit, and manage all loan applications</p>
+    </div>
+
+    <!-- Back Button -->
+    <div class="mb-8 text-left">
+        <a href="{{ route('admin.dashboard') }}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded shadow">
+            ← Back to Dashboard
+        </a>
     </div>
 
     @if(session('success'))
@@ -79,27 +80,13 @@
                             @csrf
                             @method('PATCH')
                             <td class="px-3 py-2 border">{{ $loan->id }}</td>
-                            <td class="px-3 py-2 border">
-                                <input type="number" name="loan_amount" value="{{ $loan->loan_amount }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <input type="text" name="loan_purpose" value="{{ $loan->loan_purpose }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <input type="text" name="loan_term" value="{{ $loan->loan_term }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <input type="text" name="repayment_schedule" value="{{ $loan->repayment_schedule }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <input type="text" name="collateral" value="{{ $loan->collateral }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <input type="text" name="phone" value="{{ $loan->phone }}">
-                            </td>
-                            <td class="px-3 py-2 border">
-                                <input type="email" name="email" value="{{ $loan->email }}">
-                            </td>
+                            <td class="px-3 py-2 border"><input type="number" name="loan_amount" value="{{ $loan->loan_amount }}"></td>
+                            <td class="px-3 py-2 border"><input type="text" name="loan_purpose" value="{{ $loan->loan_purpose }}"></td>
+                            <td class="px-3 py-2 border"><input type="text" name="loan_term" value="{{ $loan->loan_term }}"></td>
+                            <td class="px-3 py-2 border"><input type="text" name="repayment_schedule" value="{{ $loan->repayment_schedule }}"></td>
+                            <td class="px-3 py-2 border"><input type="text" name="collateral" value="{{ $loan->collateral }}"></td>
+                            <td class="px-3 py-2 border"><input type="text" name="phone" value="{{ $loan->phone }}"></td>
+                            <td class="px-3 py-2 border"><input type="email" name="email" value="{{ $loan->email }}"></td>
                             <td class="px-3 py-2 border">
                                 <select name="status">
                                     <option value="pending" {{ $loan->status === 'pending' ? 'selected' : '' }}>Pending</option>

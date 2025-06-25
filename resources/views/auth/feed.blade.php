@@ -1,4 +1,3 @@
-{{-- resources/views/auth/news.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,20 +73,6 @@
             @endif
         @endauth
 
-        {{-- Filter Bar --}}
-        <form method="GET" action="{{ url('/news') }}" class="mb-6 flex flex-col md:flex-row gap-4 items-center">
-            <div class="flex-grow">
-                <input name="q" placeholder="Search…" value="{{ request('q') }}">
-            </div>
-            <select name="type" class="md:w-52">
-                <option value="">All Sections</option>
-                @foreach(['weather','news','story','seminar','others'] as $t)
-                    <option value="{{ $t }}" @selected(request('type') === $t)>{{ ucfirst($t) }}</option>
-                @endforeach
-            </select>
-            <button class="btn-green md:w-auto w-full">Filter</button>
-        </form>
-
         {{-- Feed --}}
         <div class="space-y-6">
             @forelse($posts as $post)
@@ -102,7 +87,7 @@
                     <h2 class="text-xl font-bold text-green-900 mb-2">{{ $post->title }}</h2>
 
                     @if($post->image_path)
-                        <img src="{{ asset('storage/'.$post->image_path) }}" alt="image" class="w-full mb-4 rounded-md">
+                        <img src="{{ asset($post->image_path) }}" alt="image" class="w-full mb-4 rounded-md">
                     @endif
 
                     <p class="text-gray-700 mb-4">{{ $post->body }}</p>
@@ -111,6 +96,20 @@
                         <a href="{{ $post->link }}" target="_blank" class="text-blue-600 hover:underline">🔗 Read more</a>
                     @endif
                 </article>
+                @auth
+    @if(auth()->user()->role === 'admin')
+        <div class="flex justify-end gap-2 mt-4">
+            <a href="{{ route('posts.edit', $post->id) }}" class="text-blue-600 hover:underline">✏️ Edit</a>
+
+            <form action="{{ route('posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Delete this post?')">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="text-red-600 hover:underline">🗑️ Delete</button>
+            </form>
+        </div>
+    @endif
+@endauth
+
             @empty
                 <p class="text-center text-gray-600">No posts found.</p>
             @endforelse

@@ -149,9 +149,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/tracker/pay/{id}', [TrackerController::class, 'pay'])->name('loan.tracker.pay');
     Route::patch('/tracker/investment/{id}', [TrackerController::class, 'updateInvestment'])->name('investment.tracker.update');
     Route::post('/investor/withdraw/{id}', [VestmentController::class, 'withdraw'])->name('investor.withdraw');
-
-
-
 });
 
 
@@ -167,6 +164,10 @@ Route::get('/help', [HelpController::class, 'index'])->name('help');
 // routes/web.php
 Route::get('/feed', [FeedController::class, 'index'])->name('feed.index');
 Route::post('/posts', [FeedController::class, 'store'])->middleware('auth')->name('posts.store');
+Route::get('/posts/{id}/edit', [FeedController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{id}', [FeedController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [FeedController::class, 'destroy'])->name('posts.destroy');
+
 
 
 // Privacy Policy routes

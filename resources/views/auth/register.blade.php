@@ -197,8 +197,6 @@
          </div>
                <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
          @csrf
-         <label for="profile_image">Profile Image</label>
-         <input type="file" name="profile_image" accept="image/*">
       </form>
 
          <hr style="width: 1000px;"><br>

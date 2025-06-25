@@ -20,7 +20,14 @@
 
 <body class="pt-24 px-6">
     <div class="max-w-7xl mx-auto">
-        <h1 class="text-3xl font-bold text-green-900 mb-8 text-center">📢 User Feedbacks</h1>
+        <h1 class="text-3xl font-bold text-green-900 mb-4 text-center">📢 User Feedbacks</h1>
+
+        <!-- Back to Dashboard Button -->
+        <div class="mb-6 text-left">
+            <a href="{{ route('admin.dashboard') }}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded shadow">
+                ← Back to Dashboard
+            </a>
+        </div>
 
         @if(session('message'))
             <div class="mb-6 p-4 bg-green-100 text-green-800 rounded shadow text-center">

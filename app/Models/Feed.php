@@ -10,16 +10,16 @@ class Feed extends Model   // or rename to “Post” if that feels clearer
     use HasFactory;
 
     // The table name if you name it “posts”; remove if you name the model Post
-    protected $table = 'posts';
+    protected $table = 'feeds';
 
     /**
      * The attributes that can be mass-assigned
      * via create() / update().
      */
     protected $fillable = [
-        'type',         // weather, news, story, seminar, others
+        'section_type',        
         'title',
-        'body',
+        'description',
         'link',
         'image_path',
     ];
