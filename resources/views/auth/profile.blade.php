@@ -191,6 +191,8 @@
       </div>
     </form>
   </div>
+  <!-- Footer -->
+  @include('auth.partials.footer')
 </body>
 </html>
 

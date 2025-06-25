@@ -11,7 +11,7 @@ class LoaningController extends Controller
     public function index()
     {
         $loans = Loan::all();
-        return view('auth.loaning', compact('loans'));
+        return view('auth.admin.loaning', compact('loans'));
     }
 
     // Store a new loan

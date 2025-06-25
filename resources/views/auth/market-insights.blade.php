@@ -163,9 +163,6 @@
       </section>
     </main>
 
-    <footer class="bg-green-800 text-white text-center text-xs md:text-sm py-4 md:py-6 mt-auto">
-      &copy; {{ date('Y') }} Sow&Borrow. Cultivating Opportunities.
-    </footer>
   </div>
 
   <script>
@@ -216,5 +213,7 @@
       document.getElementById(region).classList.add("active");
     }
   </script>
+  {{-- Footer --}}
+  @include('auth.partials.footer')
 </body>
 </html>

@@ -11,7 +11,7 @@ class VestmentController extends Controller
     public function index()
     {
         $vests = Investment::all();
-        return view('auth.vest', compact('vests'));
+        return view('auth.admin.vest', compact('vests'));
     }
 
     public function create()

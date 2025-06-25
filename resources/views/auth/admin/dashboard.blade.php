@@ -39,16 +39,18 @@
         </a>
 
         <a href="{{ route('users.index') }}" class="block bg-white shadow-lg hover:shadow-xl transition-all border border-yellow-300 rounded-xl p-6 text-center">
-            <h3 class="text-xl font-bold text-yellow-800 mb-2">Users</h3>
-            <p class="text-sm text-gray-600">Track and manage all investment entries from stakeholders.</p>
+            <h3 class="text-xl font-bold text-yellow-800 mb-2">👤 Manage Users</h3>
+            <p class="text-sm text-gray-600">Track and manage all platform users and their access roles.</p>
         </a>
 
+        <a href="{{ route('admin.feedbacks.index') }}" class="block bg-white shadow-lg hover:shadow-xl transition-all border border-blue-300 rounded-xl p-6 text-center">
+            <h3 class="text-xl font-bold text-blue-800 mb-2">📢 View Feedbacks</h3>
+            <p class="text-sm text-gray-600">Read and respond to feedback submitted by platform users.</p>
+        </a>
     </div>
 
     <!-- Footer -->
-    <div class="text-center mt-16 text-sm text-gray-500">
-        &copy; {{ now()->year }} AgriVest | Empowering Agriculture Through Smart Finance
-    </div>
+    @include('auth.partials.footer')
 </div>
 
 </body>

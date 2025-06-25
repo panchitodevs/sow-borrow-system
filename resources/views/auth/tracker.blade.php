@@ -134,9 +134,28 @@
                 Total Investments: ₱{{ number_format($investors->sum('amount'), 2) }}
             </div>
         </div>
-
-
     </div>
+    <script>
+        // Tailwind CSS configuration for custom styles
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'green-900': '#064e3b',
+                        'green-800': '#065f46',
+                        'green-700': '#047857',
+                        'green-600': '#059669',
+                        'green-500': '#10b981',
+                        'green-400': '#34d399',
+                        'green-300': '#6ee7b7',
+                        'green-200': '#a7f3d0',
+                        'green-100': '#dcfce7'
+                    }
+                }
+            }
+        };
+    </script>
+    @include('auth.partials.footer')
 </body>
 </html>
 

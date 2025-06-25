@@ -20,6 +20,7 @@ use App\Http\Controllers\TrackerController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\AdminFeedbackController;
 
 
 
@@ -166,6 +167,8 @@ Route::get('/help', [HelpController::class, 'index'])->name('help');
 Route::get('/privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy.index');
 Route::get('/privacy-policy/download', [PrivacyPolicyController::class, 'download'])->name('privacy.download');
 
+// Admin Feedback routes
+Route::get('/admin/feedbacks', [AdminFeedbackController::class, 'index'])->name('admin.feedbacks.index');
 
 // Logout route
 Route::post('/logout', function () {
