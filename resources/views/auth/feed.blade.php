@@ -90,7 +90,7 @@
                         <img src="{{ asset($post->image_path) }}" alt="image" class="w-full mb-4 rounded-md">
                     @endif
 
-                    <p class="text-gray-700 mb-4">{{ $post->body }}</p>
+                    <p class="text-gray-700 mb-4">{{ $post->description }}</p>
 
                     @if($post->link)
                         <a href="{{ $post->link }}" target="_blank" class="text-blue-600 hover:underline">🔗 Read more</a>
